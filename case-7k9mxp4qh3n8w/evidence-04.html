@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE 04 :: FINANCIAL RECORDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050814;
+            color: #00f7ff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 247, 255, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 247, 255, 0.03) 3px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(5, 8, 20, 0.95);
+            border: 2px solid #00f7ff;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff006e;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff006e;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+        }
+
+        .evidence-number {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.8) 100%);
+            border-left: 3px solid #00f7ff;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffd700;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .account-header {
+            background: rgba(0, 247, 255, 0.1);
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #00f7ff;
+        }
+
+        .account-name {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff006e;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .account-details {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            color: #00f7ff;
+        }
+
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+        }
+
+        .transaction-table th {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .transaction-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+            color: #00f7ff;
+        }
+
+        .transaction-table tr:hover {
+            background: rgba(0, 247, 255, 0.1);
+        }
+
+        .flagged {
+            background: rgba(255, 0, 110, 0.2);
+        }
+
+        .suspicious {
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .debit {
+            color: #ff006e;
+        }
+
+        .credit {
+            color: #00ff00;
+        }
+
+        .note {
+            background: rgba(255, 0, 110, 0.1);
+            border-left: 3px solid #ff006e;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .note-title {
+            color: #ff006e;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .crypto-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: rgba(0, 247, 255, 0.2);
+            border: 1px solid #00f7ff;
+            color: #00f7ff;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            background: #00f7ff;
+            color: #050814;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FINANCIAL TRANSACTION RECORDS</h1>
+            <div class="evidence-number">EVIDENCE FILE #04 :: CASE #2847-NGT</div>
+        </div>
+
+        <div class="info-box">
+            <strong>SOURCE:</strong> Tokyo Financial Crimes Unit, Cryptocurrency Analysis Division<br>
+            <strong>WARRANT AUTHORIZATION:</strong> Judge Tanaka Hiroshi, Case #2847-NGT<br>
+            <strong>ACCOUNTS ANALYZED:</strong> All suspects' banking and cryptocurrency accounts<br>
+            <strong>PERIOD COVERED:</strong> January 1 - November 23, 2084<br>
+            <strong>ANALYST:</strong> Senior Investigator Keiko Sato, Financial Crimes Division
+        </div>
+
+        <!-- YUKI TANAKA -->
+        <div class="section">
+            <div class="account-header">
+                <div class="account-name">YUKI TANAKA</div>
+                <div class="account-details">
+                    Account: Mizuho Bank - ****-4721<br>
+                    Annual Salary: ¥6,200,000 (Lab Technician Grade 3)<br>
+                    Average Monthly Expenses: ¥420,000
+                </div>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>AMOUNT (¥)</th>
+                        <th>TYPE</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jan-Oct 2084</td>
+                        <td>Regular salary deposits</td>
+                        <td class="credit">+516,667/month</td>
+                        <td>CREDIT</td>
+                        <td>Normal payroll</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Nov 7, 2084</td>
+                        <td>Wire transfer - Cayman Islands</td>
+                        <td class="credit">+8,500,000</td>
+                        <td>CREDIT</td>
+                        <td>Source: Shell company "Pacific Ventures Ltd"</td>
+                    </tr>
+                    <tr class="suspicious">
+                        <td>Nov 9, 2084</td>
+                        <td>ATM withdrawal</td>
+                        <td class="debit">-500,000</td>
+                        <td>DEBIT</td>
+                        <td>Cash withdrawn in Shibuya</td>
+                    </tr>
+                    <tr class="suspicious">
+                        <td>Nov 12, 2084</td>
+                        <td>ATM withdrawal</td>
+                        <td class="debit">-500,000</td>
+                        <td>DEBIT</td>
+                        <td>Cash withdrawn in Roppongi</td>
+                    </tr>
+                    <tr>
+                        <td>Nov 18, 2084</td>
+                        <td>Rent payment</td>
+                        <td class="debit">-95,000</td>
+                        <td>DEBIT</td>
+                        <td>Monthly apartment rent</td>
+                    </tr>
+                    <tr>
+                        <td>Nov 22, 2084</td>
+                        <td>Convenience store</td>
+                        <td class="debit">-1,240</td>
+                        <td>DEBIT</td>
+                        <td>Normal purchase</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <div class="note-title">⚠️ FINANCIAL ANOMALY DETECTED:</div>
+                Yuki Tanaka received ¥8.5 million from an offshore shell company on November 7 - sixteen days before the murder. This amount represents more than 13 times her annual salary. The shell company "Pacific Ventures Ltd" was incorporated in the Cayman Islands three weeks earlier and dissolved two days after the transfer. This is a classic money laundering structure.<br><br>
+                <strong>CRITICAL:</strong> Large cash withdrawals totaling ¥1 million occurred immediately after the deposit, suggesting an attempt to obscure the money trail. Bank flagged this as suspicious but had not completed investigation at time of murder.
+            </div>
+        </div>
+
+        <!-- MARCUS CHEN -->
+        <div class="section">
+            <div class="account-header">
+                <div class="account-name">MARCUS CHEN</div>
+                <div class="account-details">
+                    Accounts: Multiple (Nomura Securities, Credit Suisse, Cryptocurrency exchanges)<br>
+                    Annual Salary: ¥28,000,000 + stock options<br>
+                    Net Worth (Estimated): ¥340 million
+                </div>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>AMOUNT (¥)</th>
+                        <th>TYPE</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Throughout 2084</td>
+                        <td>Executive compensation</td>
+                        <td class="credit">+2,333,333/month</td>
+                        <td>CREDIT</td>
+                        <td>Regular salary</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Nov 14, 2084</td>
+                        <td>Stock options (pending)</td>
+                        <td>+12,000,000</td>
+                        <td>PENDING</td>
+                        <td>Vest upon successful IPO (Jan 2085)</td>
+                    </tr>
+                    <tr>
+                        <td>Sept 15, 2084</td>
+                        <td>Luxury watch purchase</td>
+                        <td class="debit">-2,800,000</td>
+                        <td>DEBIT</td>
+                        <td>Patek Philippe</td>
+                    </tr>
+                    <tr class="suspicious">
+                        <td>Oct 28, 2084</td>
+                        <td>Personal loan repayment</td>
+                        <td class="debit">-5,500,000</td>
+                        <td>DEBIT</td>
+                        <td>To private lender (gambling debt)</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Nov 15, 2084</td>
+                        <td>Wire to offshore account</td>
+                        <td class="debit">-15,000,000</td>
+                        <td>DEBIT</td>
+                        <td>Recipient: "Pacific Ventures Ltd" (Cayman Islands)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <div class="note-title">⚠️ SMOKING GUN EVIDENCE:</div>
+                Marcus Chen transferred ¥15 million to "Pacific Ventures Ltd" on November 15, 2084. This is THE SAME offshore shell company that paid Yuki Tanaka ¥8.5 million on November 7. Chen created the shell company and used it to funnel money to Tanaka.<br><br>
+                <strong>TIMELINE:</strong><br>
+                - Nov 7: Tanaka receives ¥8.5M from Pacific Ventures<br>
+                - Nov 14: Chen receives email directing him to "neutralize threat"<br>
+                - Nov 15: Chen wires ¥15M to Pacific Ventures (¥8.5M already paid to Tanaka, ¥6.5M remaining)<br>
+                - Nov 23: Yamamoto murdered<br><br>
+                This establishes a direct financial link between Chen and Tanaka. The payment occurred AFTER Chen received the board's directive but BEFORE the murder.
+            </div>
+        </div>
+
+        <!-- DR. ELENA VOLKOV -->
+        <div class="section">
+            <div class="account-header">
+                <div class="account-name">DR. ELENA VOLKOV</div>
+                <div class="account-details">
+                    Accounts: Tokyo-Mitsubishi UFJ Bank, Investment portfolio<br>
+                    Annual Salary: ¥18,500,000<br>
+                    Net Worth: ¥85 million (mostly in failed startup equity - nearly worthless)
+                </div>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>AMOUNT (¥)</th>
+                        <th>TYPE</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Throughout 2084</td>
+                        <td>Salary deposits</td>
+                        <td class="credit">+1,541,667/month</td>
+                        <td>CREDIT</td>
+                        <td>Regular payroll</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Mar 2082 - ongoing</td>
+                        <td>Failed startup debt payments</td>
+                        <td class="debit">-850,000/month</td>
+                        <td>DEBIT</td>
+                        <td>BioTech Innovation Corp (bankruptcy)</td>
+                    </tr>
+                    <tr>
+                        <td>Aug 15, 2084</td>
+                        <td>Debt collector payment</td>
+                        <td class="debit">-2,200,000</td>
+                        <td>DEBIT</td>
+                        <td>Legal settlement</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Oct 30, 2084</td>
+                        <td>Credit card (past due notice)</td>
+                        <td class="debit">-1,400,000</td>
+                        <td>DEBIT</td>
+                        <td>6 months overdue</td>
+                    </tr>
+                    <tr>
+                        <td>Nov 20, 2084</td>
+                        <td>Apartment rent (late)</td>
+                        <td class="debit">-380,000</td>
+                        <td>DEBIT</td>
+                        <td>2 months behind</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <div class="note-title">FINANCIAL PRESSURE:</div>
+                Dr. Volkov is drowning in debt from her failed 2082 biotech startup. Monthly debt payments exceed ¥850,000, leaving her with minimal disposable income. Credit cards maxed out, rent payments late. Her blocked HELIX project would have included a ¥25 million personal research bonus. She's financially desperate.<br><br>
+                <strong>MOTIVE ASSESSMENT:</strong> Extremely strong financial motive. With Yamamoto removed, she would likely ascend to Chief Genetics Officer (¥12M salary increase) and HELIX would be approved (¥8B project with ¥25M bonus to her).
+            </div>
+        </div>
+
+        <!-- DR. RAYMOND FOSTER -->
+        <div class="section">
+            <div class="account-header">
+                <div class="account-name">DR. RAYMOND FOSTER</div>
+                <div class="account-details">
+                    Accounts: Multiple offshore accounts, Swiss banking, Cryptocurrency wallets<br>
+                    Annual Salary: ¥22,000,000<br>
+                    Lifestyle Expenses: ¥4.2 million/month (vastly exceeds salary)
+                </div>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>AMOUNT (¥)</th>
+                        <th>TYPE</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Throughout 2084</td>
+                        <td>Salary deposits</td>
+                        <td class="credit">+1,833,333/month</td>
+                        <td>CREDIT</td>
+                        <td>Regular payroll</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Jan-Nov 2084</td>
+                        <td>Cryptocurrency deposits</td>
+                        <td class="credit">+23,000,000</td>
+                        <td>CREDIT</td>
+                        <td>Source: Multiple anonymous wallets</td>
+                    </tr>
+                    <tr>
+                        <td>Feb 12, 2084</td>
+                        <td>Luxury car purchase</td>
+                        <td class="debit">-8,200,000</td>
+                        <td>DEBIT</td>
+                        <td>Mercedes S-Class</td>
+                    </tr>
+                    <tr>
+                        <td>Jun 5, 2084</td>
+                        <td>Casino (Macau)</td>
+                        <td class="debit">-3,500,000</td>
+                        <td>DEBIT</td>
+                        <td>Weekend trip</td>
+                    </tr>
+                    <tr>
+                        <td>Sept 22, 2084</td>
+                        <td>Jewelry purchase</td>
+                        <td class="debit">-1,900,000</td>
+                        <td>DEBIT</td>
+                        <td>Tiffany & Co.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="crypto-box">
+                <strong style="color: #ffd700; font-size: 18px;">CRYPTOCURRENCY ANALYSIS - DR. RAYMOND FOSTER</strong><br><br>
+                <strong>Total Crypto Received (2084):</strong> ¥23 million<br>
+                <strong>Source Wallets:</strong> 7 different anonymous Bitcoin wallets<br>
+                <strong>Pattern:</strong> Monthly deposits of ¥2-3 million<br>
+                <strong>Timing:</strong> Deposits correlate with Medical Division trial approvals<br><br>
+
+                <strong style="color: #ff006e;">FORENSIC ASSESSMENT:</strong> These payments appear to be bribes or kickbacks related to falsifying clinical trial data. The amounts increased significantly after HELIX trials began in March 2084. Dr. Foster was being paid to approve and falsify results for dangerous experimental treatments.<br><br>
+
+                If Yamamoto's investigation went public, Foster would face:<br>
+                - Criminal charges for falsifying medical data<br>
+                - Loss of medical license<br>
+                - Prison sentence (15-25 years)<br>
+                - Financial ruin from lawsuits<br>
+                <br>
+                <strong>MOTIVE:</strong> Absolutely desperate to prevent exposure.
+            </div>
+        </div>
+
+        <!-- JACKSON ARMSTRONG -->
+        <div class="section">
+            <div class="account-header">
+                <div class="account-name">JACKSON ARMSTRONG</div>
+                <div class="account-details">
+                    Accounts: JP Morgan Chase, USAA (Veterans), Investment accounts<br>
+                    Annual Salary: ¥24,000,000<br>
+                    Net Worth: ¥180 million (mostly from military pension + investments)
+                </div>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>DESCRIPTION</th>
+                        <th>AMOUNT (¥)</th>
+                        <th>TYPE</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Throughout 2084</td>
+                        <td>Salary + pension</td>
+                        <td class="credit">+2,450,000/month</td>
+                        <td>CREDIT</td>
+                        <td>Combined income</td>
+                    </tr>
+                    <tr class="flagged">
+                        <td>Nov 14, 2084</td>
+                        <td>Performance bonus (approved)</td>
+                        <td>+15,000,000</td>
+                        <td>PENDING</td>
+                        <td>Contingent on "Q4 security objectives met"</td>
+                    </tr>
+                    <tr>
+                        <td>Aug 3, 2084</td>
+                        <td>Son's school tuition</td>
+                        <td class="debit">-4,200,000</td>
+                        <td>DEBIT</td>
+                        <td>International School Tokyo</td>
+                    </tr>
+                    <tr>
+                        <td>Oct 15, 2084</td>
+                        <td>Wife's business investment</td>
+                        <td class="debit">-8,000,000</td>
+                        <td>DEBIT</td>
+                        <td>Art gallery startup</td>
+                    </tr>
+                    <tr class="suspicious">
+                        <td>Nov 18, 2084</td>
+                        <td>Cash withdrawal</td>
+                        <td class="debit">-3,000,000</td>
+                        <td>DEBIT</td>
+                        <td>Large cash withdrawal (no stated purpose)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <div class="note-title">FINANCIAL INCENTIVE:</div>
+                Armstrong had a ¥15 million performance bonus approved by the board on November 14 (the same day Chen received the "neutralize" directive). The bonus was contingent on "Q4 security objectives met" - corporate euphemism for handling the Yamamoto situation.<br><br>
+                The ¥3 million cash withdrawal on November 18 (five days before the murder) is unexplained. Armstrong's normal expenses are all traceable. Large cash withdrawals often indicate payments that cannot leave a paper trail.<br><br>
+                <strong>THEORY:</strong> Armstrong may have withdrawn cash to pay an accomplice or to fund operational expenses for the murder that wouldn't appear in official records.
+            </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="section" style="border-left-color: #ff006e;">
+            <div class="section-title" style="color: #ff006e;">🎯 FINANCIAL EVIDENCE SUMMARY</div>
+            
+            <div style="background: rgba(255, 0, 110, 0.15); padding: 20px; margin: 20px 0;">
+                <strong style="color: #ff006e; font-size: 18px;">CRITICAL FINDINGS:</strong><br><br>
+
+                <strong>1. CHEN → TANAKA PAYMENT:</strong><br>
+                Marcus Chen paid Yuki Tanaka ¥8.5 million through shell company "Pacific Ventures Ltd" between Nov 7-15. This establishes a direct financial conspiracy between the CFO and Dr. Yamamoto's lab assistant.<br><br>
+
+                <strong>2. TIMELINE CORRELATION:</strong><br>
+                - Nov 7: Tanaka receives payment<br>
+                - Nov 14: Chen receives "neutralize threat" directive<br>
+                - Nov 14: Armstrong's ¥15M bonus approved<br>
+                - Nov 15: Chen wires full amount to shell company<br>
+                - Nov 18: Armstrong withdraws ¥3M cash<br>
+                - Nov 23: Yamamoto murdered<br><br>
+
+                <strong>3. MOTIVE ASSESSMENT:</strong><br>
+                - <strong>Tanaka:</strong> ¥8.5M payment (confirmed bribe/coercion)<br>
+                - <strong>Chen:</strong> ¥12M stock options + saving ¥45B IPO<br>
+                - <strong>Volkov:</strong> ¥25M bonus + ¥8B project approval<br>
+                - <strong>Foster:</strong> Avoiding prison for falsifying medical data<br>
+                - <strong>Armstrong:</strong> ¥15M bonus for "handling" the situation<br><br>
+
+                <strong style="color: #ffd700;">CONCLUSION:</strong> Financial records prove a conspiracy involving multiple parties with both financial incentives and documented money transfers occurring in the weeks before the murder.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>

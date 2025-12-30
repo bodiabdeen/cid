@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE 03 :: EMAIL CORRESPONDENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050814;
+            color: #00f7ff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 247, 255, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 247, 255, 0.03) 3px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(5, 8, 20, 0.95);
+            border: 2px solid #00f7ff;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff006e;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff006e;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+        }
+
+        .evidence-number {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        .email {
+            margin: 25px 0;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.9) 100%);
+            border: 1px solid #00f7ff;
+            padding: 20px;
+        }
+
+        .email.flagged {
+            border: 2px solid #ff006e;
+            background: rgba(255, 0, 110, 0.1);
+        }
+
+        .email-header {
+            border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        .email-field {
+            margin: 8px 0;
+        }
+
+        .email-label {
+            color: #ffd700;
+            display: inline-block;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .email-value {
+            color: #00f7ff;
+        }
+
+        .email-subject {
+            font-size: 16px;
+            color: #ff006e;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .email-body {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffd700;
+            font-size: 20px;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #00f7ff;
+            padding-bottom: 10px;
+        }
+
+        .flag-note {
+            background: rgba(255, 0, 110, 0.2);
+            border-left: 4px solid #ff006e;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 13px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .highlight {
+            color: #ff006e;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: rgba(0, 247, 255, 0.2);
+            border: 1px solid #00f7ff;
+            color: #00f7ff;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            background: #00f7ff;
+            color: #050814;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>EMAIL CORRESPONDENCE</h1>
+            <div class="evidence-number">EVIDENCE FILE #03 :: CASE #2847-NGT</div>
+        </div>
+
+        <div class="info-box">
+            <strong>SOURCE:</strong> NGT Corporate Email Server (Forensic Image)<br>
+            <strong>ACCOUNTS ANALYZED:</strong> Dr. Kenji Yamamoto, Marcus Chen, Dr. Elena Volkov, Dr. Raymond Foster<br>
+            <strong>DATE RANGE:</strong> October 24 - November 23, 2084 (30 days prior to death)<br>
+            <strong>TOTAL MESSAGES:</strong> 847 emails reviewed, 23 flagged as relevant<br>
+            <strong>EXTRACTED BY:</strong> Digital Forensics Unit, Neo-Tokyo Metropolitan Police
+        </div>
+
+        <!-- THREAD 1 -->
+        <div class="section-title">📧 Thread 1: Project HELIX Conflict</div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">elena.volkov@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">October 28, 2084 - 14:22 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">RE: Project HELIX Review - Formal Response</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Kenji,<br><br>
+
+                I am deeply disappointed by your decision to block my HELIX proposal. Your characterization of my work as "reckless and premature" is not only inaccurate but professionally insulting.<br><br>
+
+                The methodology is sound. The risk assessment is comprehensive. You're blocking this because you're threatened by innovation that challenges your outdated approaches. This project represents the future of gene therapy, and you're standing in the way of progress.<br><br>
+
+                I have dedicated SIX YEARS to this research. The board was ready to approve ¥8 billion in funding until your intervention. Do you understand what you've cost me? What you've cost this company?<br><br>
+
+                I will be escalating this to the executive committee. Your stranglehold on research direction cannot continue.<br><br>
+
+                Dr. Elena Volkov<br>
+                Senior Research Director
+            </div>
+        </div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">elena.volkov@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">October 28, 2084 - 16:47 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">RE: Project HELIX Review - Formal Response</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Elena,<br><br>
+
+                Your personal attacks are noted and disappointing. My objection to HELIX is not about innovation - it's about patient safety and ethical boundaries.<br><br>
+
+                Your proposal involves genetic modifications that have not been adequately tested. The long-term effects are unknown. Rushing to human trials would violate every ethical standard we've built this company on.<br><br>
+
+                I will not approve research that puts human subjects at risk, regardless of the financial incentives or your career ambitions.<br><br>
+
+                My decision stands.<br><br>
+
+                Dr. Kenji Yamamoto<br>
+                Chief Genetics Officer
+            </div>
+        </div>
+
+        <div class="flag-note">
+            <strong>INVESTIGATOR NOTE:</strong> Dr. Volkov's anger is evident. Financial motivation clearly stated (¥8 billion project). Escalation threat made. Following emails show she did contact the board, but Yamamoto's position prevailed.
+        </div>
+
+        <!-- THREAD 2 -->
+        <div class="section-title">📧 Thread 2: IPO Concerns</div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">marcus.chen@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 12, 2084 - 09:15 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">URGENT: IPO Timeline and Your Ethics Committee Meeting</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Kenji,<br><br>
+
+                I need to speak with you immediately about your scheduled Ethics Committee meeting on November 25th.<br><br>
+
+                The IPO is valued at ¥45 billion. We launch in January. Any public disclosure of "irregularities" - regardless of merit - will destroy investor confidence and tank the offering.<br><br>
+
+                I understand you have concerns, but there are proper channels. Going to the Ethics Committee two months before our IPO is corporate suicide. Hundreds of employees have their futures tied to this offering.<br><br>
+
+                Let's discuss this privately. I'm confident we can address your concerns without jeopardizing the company's financial future.<br><br>
+
+                Call me. Today.<br><br>
+
+                Marcus Chen<br>
+                CFO
+            </div>
+        </div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">marcus.chen@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 12, 2084 - 14:33 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">RE: URGENT: IPO Timeline and Your Ethics Committee Meeting</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Marcus,<br><br>
+
+                The IPO is not my concern. Patient safety is.<br><br>
+
+                I have documented evidence of unauthorized human trials involving gene modifications that have not received regulatory approval. People's lives are being put at risk for financial gain.<br><br>
+
+                This is not negotiable. The Ethics Committee will review my findings on November 25th. If they determine regulatory violations have occurred, I will report them to the appropriate authorities.<br><br>
+
+                Your financial concerns do not outweigh human safety.<br><br>
+
+                Dr. Yamamoto
+            </div>
+        </div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">marcus.chen@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">jackson.armstrong@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">CC:</span>
+                    <span class="email-value">board@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 14, 2084 - 22:17 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">Critical Security Concern - Yamamoto Situation</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Jack,<br><br>
+
+                We have a situation that requires immediate attention. Dr. Yamamoto is scheduled to present allegations to the Ethics Committee on Nov 25. His claims, if made public, would be catastrophic for the company.<br><br>
+
+                The board has authorized me to direct you to neutralize this threat by any means necessary. The IPO cannot be jeopardized. We need a solution before the 25th.<br><br>
+
+                I trust you understand the urgency and will handle this with your usual discretion.<br><br>
+
+                This is your top priority. Report directly to me.<br><br>
+
+                Marcus Chen<br>
+                CFO
+            </div>
+        </div>
+
+        <div class="flag-note">
+            <strong>⚠️ CRITICAL EVIDENCE ⚠️</strong> This email explicitly directs Armstrong to "neutralize this threat by any means necessary" regarding Yamamoto. This language could constitute conspiracy to commit murder. Chen clearly states the board authorized this action. Armstrong received this order 9 days before the murder.
+        </div>
+
+        <!-- THREAD 3 -->
+        <div class="section-title">📧 Thread 3: Medical Division Concerns</div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">raymond.foster@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 8, 2084 - 11:24 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">Trial Protocol Violations - Formal Investigation</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Raymond,<br><br>
+
+                I am formally notifying you that I am initiating an investigation into Medical Division trial protocols. I have reason to believe that human trials have been conducted using gene therapies that have not received proper regulatory approval.<br><br>
+
+                Specifically, I have evidence of:<br>
+                - Modified gene therapy formulations administered to test subjects without informed consent<br>
+                - Falsified trial data submitted to regulators<br>
+                - Unauthorized modifications to approved treatment protocols<br><br>
+
+                As Medical Division Director, you are responsible for all clinical trials. I need your full cooperation in this investigation.<br><br>
+
+                Please provide all trial documentation for the past 18 months by November 15th.<br><br>
+
+                Dr. Kenji Yamamoto<br>
+                Chief Genetics Officer
+            </div>
+        </div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">raymond.foster@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 9, 2084 - 08:42 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">RE: Trial Protocol Violations - Formal Investigation</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Kenji,<br><br>
+
+                I strongly object to your characterization of Medical Division operations. All trials conducted under my supervision have followed proper protocols and regulatory guidelines.<br><br>
+
+                Your allegations are serious and, frankly, baseless. If you pursue this investigation, I will be forced to defend myself and this division vigorously. The documentation you're requesting is confidential patient data that requires board approval to access.<br><br>
+
+                I suggest you reconsider this course of action. False accusations of regulatory violations could have serious legal consequences for you personally.<br><br>
+
+                Dr. Raymond Foster<br>
+                Medical Division Director
+            </div>
+        </div>
+
+        <div class="flag-note">
+            <strong>INVESTIGATOR NOTE:</strong> Dr. Foster's response is defensive and threatening. He invokes "serious legal consequences" rather than simply providing the requested documentation. Post-mortem analysis confirmed Yamamoto's allegations were well-founded. Foster had significant exposure if the truth came out.
+        </div>
+
+        <!-- THREAD 4 -->
+        <div class="section-title">📧 Thread 4: Research Collaboration (Volkov-Foster)</div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">elena.volkov@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">raymond.foster@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 16, 2084 - 19:33 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">Urgent Meeting - Yamamoto Investigation</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Raymond,<br><br>
+
+                We need to talk immediately. Yamamoto's investigation affects both of us. My HELIX trials were conducted through your division, and if he exposes them, we're both finished.<br><br>
+
+                I know what you have to lose. I know about the falsified data, the payments, everything. We need to coordinate our response.<br><br>
+
+                Meet me tonight. Floor 43, your office, 21:00. Don't tell anyone.<br><br>
+
+                Elena
+            </div>
+        </div>
+
+        <div class="email flagged">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">raymond.foster@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">elena.volkov@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 16, 2084 - 20:02 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">RE: Urgent Meeting - Yamamoto Investigation</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Elena,<br><br>
+
+                Don't put this in email. Delete your message.<br><br>
+
+                I'll be there at 21:00.<br><br>
+
+                RF
+            </div>
+        </div>
+
+        <div class="flag-note">
+            <strong>⚠️ CRITICAL EVIDENCE ⚠️</strong> This exchange reveals:
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Volkov and Foster were collaborating on secret trials</li>
+                <li>Both had criminal exposure from Yamamoto's investigation</li>
+                <li>They met secretly on Nov 16 (one week before the murder) to "coordinate response"</li>
+                <li>Volkov possessed damaging information about Foster ("falsified data, the payments")</li>
+            </ul>
+            This could indicate conspiracy between Volkov and Foster.
+        </div>
+
+        <!-- THREAD 5 -->
+        <div class="section-title">📧 Thread 5: Personal Communications (Yamamoto-Tanaka)</div>
+
+        <div class="email">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">yuki.tanaka@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 20, 2084 - 16:22 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">Thank you</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Yuki,<br><br>
+
+                I wanted to tell you that I appreciate your loyalty and dedication over these past three years. You've been an exceptional assistant and a trusted colleague.<br><br>
+
+                The next few days may be difficult for the company. Whatever happens with my Ethics Committee presentation, I want you to know that you should not feel responsible. You've always done the right thing.<br><br>
+
+                If anything should happen to me, there's a backup of all my evidence files in a secure location. The access codes are in my personal safe - you're one of three people who know the combination.<br><br>
+
+                Thank you for everything.<br><br>
+
+                Dr. Yamamoto
+            </div>
+        </div>
+
+        <div class="email">
+            <div class="email-header">
+                <div class="email-field">
+                    <span class="email-label">FROM:</span>
+                    <span class="email-value">yuki.tanaka@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">TO:</span>
+                    <span class="email-value">kenji.yamamoto@ngt-corp.jp</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">DATE:</span>
+                    <span class="email-value">November 20, 2084 - 17:45 JST</span>
+                </div>
+                <div class="email-field">
+                    <span class="email-label">SUBJECT:</span>
+                    <span class="email-subject">RE: Thank you</span>
+                </div>
+            </div>
+            <div class="email-body">
+                Dr. Yamamoto,<br><br>
+
+                Your message scared me. Please be careful. I know you're doing the right thing, but there are people who don't want the truth to come out.<br><br>
+
+                I will always support you. You've been like a father to me.<br><br>
+
+                Please don't take unnecessary risks.<br><br>
+
+                Yuki
+            </div>
+        </div>
+
+        <div class="flag-note">
+            <strong>INVESTIGATOR NOTE:</strong> These messages show the close relationship between Yamamoto and Tanaka. His reference to "if anything should happen to me" suggests he feared for his safety. Tanaka's emotional response appears genuine. However, she was one of three people with access to his personal safe - giving her unique access to sensitive information.
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>

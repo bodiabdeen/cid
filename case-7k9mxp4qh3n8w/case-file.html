@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
+    <title>CASE FILE :: YAMAMOTO INVESTIGATION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050814;
+            color: #00f7ff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 247, 255, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 247, 255, 0.03) 3px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(5, 8, 20, 0.9);
+            border: 2px solid #00f7ff;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff006e;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff006e;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+        }
+
+        .case-number {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.8) 100%);
+            border-left: 4px solid #00f7ff;
+        }
+
+        .victim-section {
+            border-left-color: #ff006e;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .victim-name {
+            color: #ff006e;
+            font-size: 28px;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .info-value {
+            color: #00f7ff;
+        }
+
+        .suspect-card {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(0, 247, 255, 0.05);
+            border: 1px solid #00f7ff;
+            transition: all 0.3s ease;
+        }
+
+        .suspect-card:hover {
+            background: rgba(0, 247, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+        }
+
+        .suspect-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #00f7ff;
+        }
+
+        .suspect-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            color: #ff006e;
+        }
+
+        .suspect-number {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        .suspect-role {
+            color: #00f7ff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .detail-section {
+            margin: 15px 0;
+        }
+
+        .detail-title {
+            color: #ffd700;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-content {
+            color: #00f7ff;
+            font-size: 15px;
+            line-height: 1.7;
+            padding-left: 15px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: rgba(0, 247, 255, 0.2);
+            border: 1px solid #00f7ff;
+            color: #00f7ff;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            background: #00f7ff;
+            color: #050814;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.6);
+        }
+
+        .classified {
+            color: #ff006e;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CASE FILE</h1>
+            <div class="case-number">CASE #2847-NGT :: YAMAMOTO INVESTIGATION</div>
+        </div>
+
+        <div class="section victim-section">
+            <div class="section-title">👤 VICTIM PROFILE</div>
+            <div class="victim-name">DR. KENJI YAMAMOTO [DECEASED]</div>
+            
+            <div class="info-grid">
+                <div class="info-label">AGE:</div>
+                <div class="info-value">52 years old</div>
+                
+                <div class="info-label">POSITION:</div>
+                <div class="info-value">Chief Genetics Officer, Neo-Tokyo Genetics Corporation</div>
+                
+                <div class="info-label">HEIGHT/BUILD:</div>
+                <div class="info-value">173cm (5'8"), slender build, approximately 68kg</div>
+                
+                <div class="info-label">APPEARANCE:</div>
+                <div class="info-value">Salt-and-pepper hair (short, professional cut), brown eyes behind rectangular titanium-frame glasses, clean-shaven, typically wore white lab coat over dark business attire</div>
+                
+                <div class="info-label">YEARS AT NGT:</div>
+                <div class="info-value">14 years (joined 2070)</div>
+                
+                <div class="info-label">CLEARANCE LEVEL:</div>
+                <div class="info-value">OMEGA (highest corporate access)</div>
+                
+                <div class="info-label">DATE OF DEATH:</div>
+                <div class="info-value">November 23, 2084 at 22:47:33 JST</div>
+                
+                <div class="info-label">LOCATION:</div>
+                <div class="info-value">Lab 12-A, Floor 47, NGT Headquarters</div>
+                
+                <div class="info-label">CAUSE OF DEATH:</div>
+                <div class="info-value">Targeted CRISPR-based gene-editing toxin delivered via compromised personalized medication</div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">Background:</div>
+                <div class="detail-content">
+                    Dr. Yamamoto was a brilliant molecular biologist who pioneered several breakthrough gene therapies that made NGT a leader in the industry. Known for his meticulous ethical standards and perfectionism. Married to Akiko Yamamoto for 28 years, two adult children living abroad. Reserved personality, few close friends, devoted to his work. Known to work late nights alone in his private lab.
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">Recent Activity:</div>
+                <div class="detail-content">
+                    In the weeks before his death, Dr. Yamamoto became increasingly withdrawn and appeared stressed. Multiple witnesses reported heated arguments with executives. He had scheduled a confidential meeting with the Ethics Committee for November 25, 2084. <span class="classified">CLASSIFIED INTEL:</span> Forensic analysis of his personal workstation revealed he was compiling evidence of unauthorized human trials involving unapproved gene modifications.
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">Personal Habits:</div>
+                <div class="detail-content">
+                    Followed a strict routine. Took personalized gene therapy supplements daily at 22:30 JST (prepared by NGT's Medical Division). Vegetarian. Non-smoker. Exercised regularly. Security records show he typically left the building between 23:00-23:30 JST on weeknights. Trusted very few people with access to his private laboratory.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🔍 SUSPECT PROFILES</div>
+            <p style="color: #ffd700; margin-bottom: 30px; font-family: 'Share Tech Mono', monospace; font-size: 14px;">
+                Five individuals have been identified as persons of interest. Each had means, motive, and opportunity. Cross-reference with evidence files for timeline verification.
+            </p>
+
+            <!-- SUSPECT 1 -->
+            <div class="suspect-card">
+                <div class="suspect-header">
+                    <div class="suspect-name">DR. ELENA VOLKOV</div>
+                    <div class="suspect-number">SUSPECT #1</div>
+                </div>
+                <div class="suspect-role">Senior Research Director, Genetic Engineering Division</div>
+                
+                <div class="info-grid">
+                    <div class="info-label">AGE:</div>
+                    <div class="info-value">47 years old</div>
+                    
+                    <div class="info-label">HEIGHT/BUILD:</div>
+                    <div class="info-value">168cm (5'6"), athletic build, 61kg</div>
+                    
+                    <div class="info-label">APPEARANCE:</div>
+                    <div class="info-value">Platinum blonde hair (shoulder-length, usually in neat bun), piercing blue eyes, pale complexion, sharp facial features. Typically wears designer business suits (favors dark navy and charcoal). Small scar above left eyebrow. Wears expensive Swiss watch on right wrist (left-handed).</div>
+                    
+                    <div class="info-label">CLEARANCE:</div>
+                    <div class="info-value">ALPHA (second-highest access)</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Background:</div>
+                    <div class="detail-content">
+                        Brilliant scientist recruited from Moscow Institute of Genetics in 2078. Fiercely ambitious and competitive. Published numerous papers that challenged Dr. Yamamoto's methodologies. Known for aggressive pursuit of patents and research funding. Divorced, no children. Workaholic with reputation for pushing ethical boundaries in pursuit of scientific advancement.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Motive:</div>
+                    <div class="detail-content">
+                        Dr. Volkov was next in line for Chief Genetics Officer if Yamamoto retired or was removed. She had submitted a competing proposal for Project HELIX (worth ¥8 billion) that Yamamoto blocked, calling it "reckless and premature." Email records show intense professional rivalry. Financial records indicate she had significant debt from a failed biotech startup in 2082.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Opportunity:</div>
+                    <div class="detail-content">
+                        Security logs show she accessed Floor 47 at 21:15 JST and left at 21:43 JST on the night of the murder. Claims she was retrieving research files from her office. Has ALPHA clearance allowing access to CRISPR synthesis equipment. Trained in advanced molecular biology with specific expertise in gene-editing delivery mechanisms.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Alibi:</div>
+                    <div class="detail-content">
+                        States she returned to her apartment in Shibuya district by 22:15 JST and worked from home until 01:00 JST. Building security confirms entry at 22:18 JST, but no witnesses can verify she stayed in her apartment. Phone records show no outgoing calls or messages between 22:00-01:00 JST, which she claims is normal when she's focused on work.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUSPECT 2 -->
+            <div class="suspect-card">
+                <div class="suspect-header">
+                    <div class="suspect-name">MARCUS CHEN</div>
+                    <div class="suspect-number">SUSPECT #2</div>
+                </div>
+                <div class="suspect-role">Chief Financial Officer, NGT Corporation</div>
+                
+                <div class="info-grid">
+                    <div class="info-label">AGE:</div>
+                    <div class="info-value">44 years old</div>
+                    
+                    <div class="info-label">HEIGHT/BUILD:</div>
+                    <div class="info-value">182cm (6'0"), lean build, 77kg</div>
+                    
+                    <div class="info-label">APPEARANCE:</div>
+                    <div class="info-value">Black hair (styled with gel, slight graying at temples), dark brown eyes, tanned skin. Always immaculately dressed in custom-tailored Italian suits. Wears Rolex Submariner watch, gold wedding band, expensive cologne (Creed Aventus). Confident posture, firm handshake.</div>
+                    
+                    <div class="info-label">CLEARANCE:</div>
+                    <div class="info-value">BETA (executive access, no lab equipment authorization)</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Background:</div>
+                    <div class="detail-content">
+                        Harvard MBA, former investment banker at Goldman Sachs. Joined NGT in 2079 to "clean up" their financial operations. Reputation as a ruthless cost-cutter. Married to Sophia Chen (fashion designer), two children in private school. Known for prioritizing profits over research ethics. Multiple complaints filed against him for pressuring scientists to rush clinical trials.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Motive:</div>
+                    <div class="detail-content">
+                        Dr. Yamamoto's planned ethics disclosure would have destroyed NGT's upcoming IPO (valued at ¥45 billion). Financial records show Chen had ¥12 million in stock options that would vest upon successful IPO. Additionally, Chen had authorized the questionable trials that Yamamoto was investigating. Criminal exposure possible if evidence went public. Email exchanges show Chen threatening to "find a solution" to "the Yamamoto problem."
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Opportunity:</div>
+                    <div class="detail-content">
+                        Security logs show no record of Chen accessing Floor 47 on November 23. However, his executive BETA clearance would allow him to access many restricted areas. Phone records show he made a 47-minute call from his office (Floor 52) at 22:05 JST. Office is directly above Dr. Yamamoto's lab. No scientific training in genetics, but has financial resources to hire someone with expertise.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Alibi:</div>
+                    <div class="detail-content">
+                        Claims he worked in his office until 23:30 JST, then went home. Wife confirms he arrived home around 00:15 JST (30-minute drive is consistent). However, there's a 1-hour 45-minute window where he was alone in the building. Surveillance from executive floor shows him leaving his office at 23:27 JST. Security guard saw him exit building at 23:34 JST.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUSPECT 3 -->
+            <div class="suspect-card">
+                <div class="suspect-header">
+                    <div class="suspect-name">YUKI TANAKA</div>
+                    <div class="suspect-number">SUSPECT #3</div>
+                </div>
+                <div class="suspect-role">Lab Technician, Dr. Yamamoto's Personal Assistant</div>
+                
+                <div class="info-grid">
+                    <div class="info-label">AGE:</div>
+                    <div class="info-value">29 years old</div>
+                    
+                    <div class="info-label">HEIGHT/BUILD:</div>
+                    <div class="info-value">157cm (5'2"), petite build, 49kg</div>
+                    
+                    <div class="info-label">APPEARANCE:</div>
+                    <div class="info-value">Long straight black hair (often in ponytail), dark brown eyes, round face, pale skin, delicate features. Wears standard white lab coat over casual clothing (jeans, simple tops). Black-framed glasses for reading. Minimal makeup. Small butterfly tattoo on right wrist. Quiet demeanor, avoids eye contact.</div>
+                    
+                    <div class="info-label">CLEARANCE:</div>
+                    <div class="info-value">GAMMA (lab access only, supervised equipment use)</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Background:</div>
+                    <div class="detail-content">
+                        Master's degree in molecular biology from Tokyo University. Hired by Dr. Yamamoto personally in 2081. Exceptionally skilled lab technician despite young age. Shy and introverted, devoted to her work. Lives alone in small apartment near NGT headquarters. No known romantic relationships. Colleagues describe her as "invisible" and "always in the background." Dr. Yamamoto was her mentor and only real friend at the company.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Motive:</div>
+                    <div class="detail-content">
+                        Financial records reveal Yuki received ¥8.5 million from an offshore account two weeks before the murder. Bank investigates flagged it as suspicious. Additionally, she had prepared Dr. Yamamoto's personalized gene therapy supplements for the past three years, giving her intimate knowledge of his medical routine. <span class="classified">POSSIBLE BLACKMAIL OR COERCION:</span> Investigators suspect she may have been pressured by another party. Therapist records (obtained via warrant) indicate recent severe anxiety and insomnia.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Opportunity:</div>
+                    <div class="detail-content">
+                        She was one of the last people to see Dr. Yamamoto alive. Security logs show her accessing Lab 12-A at 22:15 JST and leaving at 22:34 JST on the night of the murder. She admits she delivered his daily supplement dose at approximately 22:25 JST, then left when he asked for privacy to "finish urgent work." She had unrestricted access to his lab and handled his medications daily. Possessed knowledge and skills to synthesize CRISPR-based compounds.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Alibi:</div>
+                    <div class="detail-content">
+                        Claims she went directly home after leaving the lab at 22:34 JST. Subway records confirm she swiped her transit card at Roppongi Station at 22:41 JST and at her home station (Nakano) at 23:03 JST. Convenience store receipt shows she purchased dinner at 23:12 JST near her apartment. Security camera from her building shows her entering at 23:17 JST. No one can verify she stayed in her apartment for the remainder of the night. Phone was off from 23:30 JST until 07:00 JST the next morning.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUSPECT 4 -->
+            <div class="suspect-card">
+                <div class="suspect-header">
+                    <div class="suspect-name">DR. RAYMOND FOSTER</div>
+                    <div class="suspect-number">SUSPECT #4</div>
+                </div>
+                <div class="suspect-role">Director of Medical Division, NGT Corporation</div>
+                
+                <div class="info-grid">
+                    <div class="info-label">AGE:</div>
+                    <div class="info-value">58 years old</div>
+                    
+                    <div class="info-label">HEIGHT/BUILD:</div>
+                    <div class="info-value">175cm (5'9"), heavy build, 95kg</div>
+                    
+                    <div class="info-label">APPEARANCE:</div>
+                    <div class="info-value">Bald (shaves head), grey-blue eyes, round face with ruddy complexion, prominent jowls. Thick grey beard (neatly trimmed). Always wears white physician's coat over business casual attire (khakis, polo shirts). Chunky gold bracelet on left wrist. Slightly hunched posture. Deep, authoritative voice.</div>
+                    
+                    <div class="info-label">CLEARANCE:</div>
+                    <div class="info-value">ALPHA (medical facilities and pharmaceutical synthesis access)</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Background:</div>
+                    <div class="detail-content">
+                        Johns Hopkins Medical School graduate, board-certified in internal medicine and pharmacology. Joined NGT in 2075. Oversees all medical testing and personalized treatment programs for executives and research staff. Previously worked at Pfizer where he was quietly let go after internal investigation (details sealed). Widower, adult daughter estranged. Known for expensive tastes and lavish lifestyle beyond his salary.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Motive:</div>
+                    <div class="detail-content">
+                        Dr. Foster personally supervised the unauthorized human trials that Yamamoto was investigating. If exposed, Foster faced criminal charges, loss of medical license, and prison time. Financial records show unexplained deposits totaling ¥23 million over the past year, suggesting he was being paid to falsify trial data. Additionally, he had approved and prepared Dr. Yamamoto's personalized gene therapy regimen, giving him perfect knowledge of how to weaponize it.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Opportunity:</div>
+                    <div class="detail-content">
+                        Security logs show Dr. Foster accessed the Medical Division (Floor 43) at 19:30 JST and his badge was used to exit at 22:52 JST. However, floor 43 is only four floors below the crime scene. As Director of Medical Division, he had authorized access to pharmaceutical synthesis equipment and gene therapy preparation facilities. He personally oversaw the creation of Dr. Yamamoto's customized supplements each month.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Alibi:</div>
+                    <div class="detail-content">
+                        Claims he was in his office reviewing patient charts until approximately 22:45 JST, then drove home. Traffic cameras confirm his car leaving the NGT parking garage at 22:54 JST. Arrived home (confirmed by smart home system) at 23:27 JST. However, there are no witnesses to verify his presence in his office during the critical 22:00-22:45 JST window. His office is equipped with a private elevator with access to multiple floors, including Floor 47.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUSPECT 5 -->
+            <div class="suspect-card">
+                <div class="suspect-header">
+                    <div class="suspect-name">JACKSON "JACK" ARMSTRONG</div>
+                    <div class="suspect-number">SUSPECT #5</div>
+                </div>
+                <div class="suspect-role">Chief Security Officer, NGT Corporation</div>
+                
+                <div class="info-grid">
+                    <div class="info-label">AGE:</div>
+                    <div class="info-value">51 years old</div>
+                    
+                    <div class="info-label">HEIGHT/BUILD:</div>
+                    <div class="info-value">188cm (6'2"), muscular build, 98kg</div>
+                    
+                    <div class="info-label">APPEARANCE:</div>
+                    <div class="info-value">Military-style buzz cut (dark brown with gray), steel-gray eyes, square jaw, weathered complexion. Scar running from right temple to cheekbone. Wears dark suits with American flag lapel pin. Tactical smartwatch on left wrist. Former military bearing evident in posture and movement. Deep, commanding voice with slight Texas accent.</div>
+                    
+                    <div class="info-label">CLEARANCE:</div>
+                    <div class="info-value">OMEGA-SECURITY (unrestricted building access, master override capabilities)</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Background:</div>
+                    <div class="detail-content">
+                        Retired US Army Colonel, 22 years of service including Special Forces. Joined NGT in 2080 to build corporate security infrastructure. Expertise in surveillance, intelligence, and "problem solving." Married to Japanese national (Keiko Armstrong), one teenage son. Known for absolute loyalty to the corporation and ruthless efficiency. Has been investigated twice for use of excessive force but never charged. Maintains extensive network of former military and intelligence contacts.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Motive:</div>
+                    <div class="detail-content">
+                        As Chief Security Officer, Armstrong's primary duty was protecting corporate interests. Email evidence shows he was explicitly ordered by the executive board to "neutralize the threat" posed by Yamamoto's ethics investigation. Armstrong had previously executed corporate espionage operations against competitors. Financial records show a ¥15 million bonus was approved contingent on "resolving security concerns by end of Q4 2084." No scientific knowledge, but has extensive contacts who could provide technical expertise.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Opportunity:</div>
+                    <div class="detail-content">
+                        As Chief Security Officer, Armstrong had master access to all building areas and could manipulate security systems, including badge logs and camera footage. He had the authority to enter any room at any time without raising suspicion. Security logs show his badge wasn't used on Floor 47 on November 23, but he could easily override systems. Additionally, he had access to personnel files containing detailed information about Yamamoto's medical regimen and routines.
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-title">Alibi:</div>
+                    <div class="detail-content">
+                        Armstrong claims he was in the Security Operations Center (Floor 5) monitoring systems from 21:00-23:30 JST. Security logs support this, showing his badge access to the SOC at 20:58 JST and exit at 23:33 JST. However, SOC has private elevator access to all floors. Two security guards report seeing him at his station around 22:00 JST and again around 23:15 JST, but cannot account for the period between 22:00-23:15 JST. Phone records show he made no calls during this time, unusual for someone in his position.
+                </div>
+            </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE 07 :: TIMELINE RECONSTRUCTION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #050814; color: #00f7ff; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 20px; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(0, 247, 255, 0.03) 0px, transparent 1px, transparent 2px, rgba(0, 247, 255, 0.03) 3px); pointer-events: none; animation: scanlines 8s linear infinite; z-index: 1; }
+        @keyframes scanlines { 0% { transform: translateY(0); } 100% { transform: translateY(10px); } }
+        .container { max-width: 1200px; margin: 0 auto; background: rgba(5, 8, 20, 0.95); border: 2px solid #00f7ff; padding: 40px; position: relative; z-index: 2; box-shadow: 0 0 40px rgba(0, 247, 255, 0.3); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #ff006e; }
+        h1 { font-family: 'Orbitron', sans-serif; color: #ff006e; font-size: 32px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 0, 110, 0.8); }
+        .evidence-number { font-family: 'Share Tech Mono', monospace; color: #ffd700; font-size: 14px; letter-spacing: 2px; }
+        .info-box { background: rgba(255, 215, 0, 0.1); border-left: 4px solid #ffd700; padding: 15px 20px; margin: 20px 0; font-family: 'Share Tech Mono', monospace; font-size: 13px; }
+        .timeline-entry { margin: 15px 0; padding: 20px; background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.9) 100%); border-left: 4px solid #00f7ff; }
+        .timeline-entry.critical { border-left-color: #ff006e; background: rgba(255, 0, 110, 0.1); }
+        .time { font-family: 'Share Tech Mono', monospace; color: #ffd700; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .event { color: #00f7ff; font-size: 15px; line-height: 1.7; }
+        .person { color: #ff006e; font-weight: bold; }
+        .note { background: rgba(255, 0, 110, 0.1); border-left: 3px solid #ff006e; padding: 15px; margin: 20px 0; font-size: 14px; }
+        .note-title { color: #ff006e; font-weight: bold; margin-bottom: 8px; }
+        .back-link { display: inline-block; margin-top: 30px; padding: 12px 24px; background: rgba(0, 247, 255, 0.2); border: 1px solid #00f7ff; color: #00f7ff; text-decoration: none; font-family: 'Share Tech Mono', monospace; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { background: #00f7ff; color: #050814; box-shadow: 0 0 20px rgba(0, 247, 255, 0.6); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TIMELINE RECONSTRUCTION</h1>
+            <div class="evidence-number">EVIDENCE FILE #07 :: CASE #2847-NGT</div>
+        </div>
+
+        <div class="info-box">
+            <strong>DATE:</strong> November 23, 2084<br>
+            <strong>RECONSTRUCTION METHOD:</strong> Security logs + Phone records + Witness statements + Equipment logs<br>
+            <strong>TIME RANGE:</strong> 18:00 - 24:00 JST (critical 6-hour window)<br>
+            <strong>VERIFIED BY:</strong> Lead Investigator Detective Nakamura
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">18:23:17 JST</div>
+            <div class="event"><span class="person">Dr. Yamamoto</span> enters Floor 47 and accesses Lab 12-A. Begins work on ethics committee presentation. No other personnel on floor.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">19:30:15 JST</div>
+            <div class="event"><span class="person">Dr. Foster</span> enters Medical Division (Floor 43). Badge logs show he remains in his office until departure at 22:52.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">19:41-20:19 JST</div>
+            <div class="event"><span class="person">Yuki Tanaka</span> visits Lab 12-A (first visit of evening). Assists with routine lab maintenance. Departs normally.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">19:45:22 JST</div>
+            <div class="event"><span class="person">Marcus Chen</span> enters his office on Floor 52. Will remain in building until 23:27.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">20:58:09 JST</div>
+            <div class="event"><span class="person">Jackson Armstrong</span> enters Security Operations Center (Floor 5). Security guard Watanabe confirms his presence.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">21:15-21:43 JST</div>
+            <div class="event"><span class="person">Dr. Volkov</span> accesses Floor 47. Enters her office (47-18), NOT Lab 12-A. Leaves 28 minutes later. Custodian witnesses her departing "in a hurry, looking tense."</div>
+        </div>
+
+        <div class="note">
+            <div class="note-title">ANALYSIS - VOLKOV'S PRESENCE:</div>
+            Volkov was on the same floor as Yamamoto during this window but security logs show she never accessed Lab 12-A. Her office visit appears to be establishing an alibi - being seen on Floor 47 without directly approaching the victim.
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:00:00 JST</div>
+            <div class="event">Security guard Watanabe visits SOC, confirms <span class="person">Armstrong</span> at his station. Brief conversation about holiday scheduling. Watanabe returns to main desk.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:05:00 JST</div>
+            <div class="event"><span class="person">Marcus Chen</span> places phone call to <span class="person">Jackson Armstrong</span>. Call duration: 47 minutes 02 seconds. This call spans the entire murder timeframe.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:15:09 JST</div>
+            <div class="event"><span class="person">Yuki Tanaka</span> enters Floor 47 (second visit). Accesses Lab 12-A at 22:16:44.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:18:55 JST</div>
+            <div class="event"><span class="person">Tanaka</span> accesses medical supply cabinet in Lab 12-A. Equipment log: "Retrieved supplement dose." This is Dr. Yamamoto's daily gene therapy ampule.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:25:12 JST</div>
+            <div class="event"><span class="person">Dr. Yamamoto</span> activates privacy mode (disables internal cameras). Standard procedure for taking medication.</div>
+        </div>
+
+        <div class="note">
+            <div class="note-title">CRITICAL WINDOW BEGINS:</div>
+            From this point forward, no visual surveillance exists inside Lab 12-A. Only equipment logs and door access records remain.
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:30:47 JST</div>
+            <div class="event"><span class="person">Dr. Yamamoto</span> administers gene therapy dose via auto-injector. Equipment log confirms "Gene therapy administered." <strong>THIS IS THE POISONED DOSE.</strong></div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:33:52 JST</div>
+            <div class="event"><span class="person">Yuki Tanaka</span> exits Lab 12-A. She was the last person to see Dr. Yamamoto alive.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:34:26 JST</div>
+            <div class="event"><span class="person">Tanaka</span> exits Floor 47. Badge logs show she goes directly to elevator.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">22:41:33 JST</div>
+            <div class="event"><span class="person">Tanaka</span> swipes transit card at Roppongi Station. Heading home.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:45:30 JST (ESTIMATED)</div>
+            <div class="event"><span class="person">Dr. Yamamoto</span> - Terminal activity ceases abruptly. Toxin symptoms begin: sudden chest pain, tachycardia, breathing difficulty.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:47:33 JST</div>
+            <div class="event"><span class="person">Dr. Kenji Yamamoto</span> - FATAL CARDIAC ARREST. Death occurs at workstation. No possibility of rescue given toxin's rapid action.</div>
+        </div>
+
+        <div class="note">
+            <div class="note-title">⚠️ MURDER CONFIRMED:</div>
+            Death occurred exactly 16 minutes and 46 seconds after administration of the gene therapy dose. Timing matches toxicology report's predicted effect window (15-17 minutes).
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">22:52:02 JST</div>
+            <div class="event"><span class="person">Chen-Armstrong phone call</span> ends. Total duration: 47 minutes. Call terminates just 4.5 minutes after Yamamoto's death.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">22:52:44 JST</div>
+            <div class="event"><span class="person">Dr. Foster</span> exits Medical Division (Floor 43). Leaves building via main exit.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">23:03:18 JST</div>
+            <div class="event"><span class="person">Tanaka</span> arrives at Nakano Station (her home station). Security camera at her apartment building confirms entry at 23:17. Phone powered off at 23:30.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">23:14:37 JST</div>
+            <div class="event"><span class="person">Jackson Armstrong</span> uses emergency override to enter Lab 12-A. "Discovers" Dr. Yamamoto's body at workstation.</div>
+        </div>
+
+        <div class="note">
+            <div class="note-title">SUSPICIOUS TIMING:</div>
+            Armstrong "discovered" the body exactly 27 minutes after death. Questions: (1) Why did he check Lab 12-A at this specific time? (2) How did he know something was wrong? (3) Why use emergency override instead of calling first?
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">23:15:00 JST</div>
+            <div class="event">Security guard Watanabe sees <span class="person">Armstrong</span> at SOC station again (second visual confirmation). Armstrong appears to be on phone. This is AFTER body discovery but BEFORE reporting it.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">23:18:42 JST</div>
+            <div class="event"><span class="person">Armstrong</span> reports body discovery to emergency services. States he noticed Dr. Yamamoto had not exited building and went to check on him.</div>
+        </div>
+
+        <div class="timeline-entry">
+            <div class="time">23:27:18 JST</div>
+            <div class="event"><span class="person">Marcus Chen</span> exits building. Traffic cameras confirm his vehicle leaving garage at 23:29.</div>
+        </div>
+
+        <div class="timeline-entry critical">
+            <div class="time">23:45:12 JST</div>
+            <div class="event"><span class="person">Armstrong</span> calls <span class="person">Chen</span>. Duration: 12 minutes 33 seconds. Ostensibly "reporting" the death to CFO, but this is 31 minutes after body was discovered and 27 minutes after emergency services were called.</div>
+        </div>
+
+        <div style="background: rgba(255, 0, 110, 0.15); padding: 25px; margin: 30px 0; border: 2px solid #ff006e;">
+            <strong style="color: #ff006e; font-size: 20px;">TIMELINE CONCLUSIONS:</strong><br><br>
+
+            <strong>1. TANAKA'S DELIVERY:</strong> She delivered the poisoned dose at 22:18-22:30 but left BEFORE Yamamoto died. She likely didn't know it was lethal.<br><br>
+
+            <strong>2. CHEN-ARMSTRONG COORDINATION:</strong> Their 47-minute phone call (22:05-22:52) covered the exact murder window. Both have alibis (on phone together) while maintaining communication throughout execution.<br><br>
+
+            <strong>3. ARMSTRONG'S "DISCOVERY":</strong> He entered Lab 12-A at precisely 23:14 - only 27 minutes after death. This timing suggests foreknowledge. He then waited 4 minutes before reporting to emergency services.<br><br>
+
+            <strong>4. VOLKOV'S ALIBI:</strong> She was on Floor 47 (21:15-21:43) but LEFT before the murder. This establishes her presence near the scene but creates distance from the actual execution.<br><br>
+
+            <strong>5. FOSTER'S POSITION:</strong> On Floor 43 (Medical) during murder timeframe. Four floors below crime scene. Left building shortly after death, before body was discovered.<br><br>
+
+            <strong style="color: #ffd700;">KEY DEDUCTION:</strong> The timeline proves the murder required COORDINATION between multiple parties operating simultaneously from different locations.
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>

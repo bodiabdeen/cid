@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HINT LEVEL 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #050814; color: #00f7ff; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 20px; display: flex; align-items: center; justify-content: center; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(0, 247, 255, 0.03) 0px, transparent 1px, transparent 2px, rgba(0, 247, 255, 0.03) 3px); pointer-events: none; animation: scanlines 8s linear infinite; z-index: 1; }
+        @keyframes scanlines { 0% { transform: translateY(0); } 100% { transform: translateY(10px); } }
+        .container { max-width: 900px; background: rgba(5, 8, 20, 0.95); border: 2px solid #ff006e; padding: 50px; position: relative; z-index: 2; box-shadow: 0 0 40px rgba(255, 0, 110, 0.4); text-align: center; }
+        h1 { font-family: 'Orbitron', sans-serif; color: #ff006e; font-size: 36px; margin-bottom: 20px; text-shadow: 0 0 20px rgba(255, 0, 110, 0.8); }
+        .hint-level { font-family: 'Share Tech Mono', monospace; color: #00f7ff; font-size: 14px; letter-spacing: 2px; margin-bottom: 40px; }
+        .hint-box { background: rgba(255, 0, 110, 0.1); border: 2px solid #ff006e; padding: 30px; margin: 30px 0; line-height: 1.8; font-size: 16px; text-align: left; }
+        .hint-text { color: #00f7ff; margin: 20px 0; }
+        .highlight { color: #ff006e; font-weight: bold; }
+        .connection { background: rgba(255, 215, 0, 0.1); padding: 15px; margin: 15px 0; border-left: 4px solid #ffd700; }
+        .back-link { display: inline-block; margin-top: 30px; padding: 12px 24px; background: rgba(0, 247, 255, 0.2); border: 1px solid #00f7ff; color: #00f7ff; text-decoration: none; font-family: 'Share Tech Mono', monospace; transition: all 0.3s ease; text-transform: uppercase; }
+        .back-link:hover { background: #00f7ff; color: #050814; box-shadow: 0 0 20px rgba(0, 247, 255, 0.6); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 CRITICAL CONNECTIONS</h1>
+        <div class="hint-level">LEVEL 2 :: KEY EVIDENCE LINKAGE</div>
+
+        <div class="hint-box">
+            <div class="hint-text">
+                This was not a simple murder. The evidence reveals a <span class="highlight">conspiracy involving multiple perpetrators</span> with different roles.
+            </div>
+
+            <div class="connection">
+                <strong style="color: #ffd700;">CONNECTION #1 - THE MONEY TRAIL:</strong><br><br>
+                Look at <strong>Evidence 04 (Financial Records)</strong>: Marcus Chen transferred ¥15 million to a Cayman Islands shell company called "Pacific Ventures Ltd" on November 15.<br><br>
+                That SAME shell company paid Yuki Tanaka ¥8.5 million on November 7.<br><br>
+                <span class="highlight">Chen paid Tanaka through an offshore account.</span> This establishes a direct financial link between the CFO and the lab technician who delivered the fatal dose.
+            </div>
+
+            <div class="connection">
+                <strong style="color: #ffd700;">CONNECTION #2 - THE PREPARATION:</strong><br><br>
+                Check <strong>Evidence 08 (Lab Equipment Logs)</strong>: On November 21, Dr. Foster was creating Yamamoto's gene therapy dose (5-hour session).<br><br>
+                At 11:30 during that session, Dr. Volkov entered the synthesis lab. Witness testimony (<strong>Evidence 06</strong>) confirms they had a private 20-minute conversation.<br><br>
+                <span class="highlight">Both Foster and Volkov were present when the poisoned dose was being prepared.</span>
+            </div>
+
+            <div class="connection">
+                <strong style="color: #ffd700;">CONNECTION #3 - THE ALIBIS:</strong><br><br>
+                Review <strong>Evidence 05 (Phone Records)</strong> and <strong>Evidence 07 (Timeline)</strong>: Marcus Chen and Jackson Armstrong were on the phone together for exactly 47 minutes (22:05-22:52 JST) during the murder.<br><br>
+                Dr. Yamamoto died at 22:47 - while they were talking.<br><br>
+                <span class="highlight">They created mutual alibis while maintaining communication during the execution.</span>
+            </div>
+
+            <div class="hint-text" style="color: #ff006e; margin-top: 30px; text-align: center;">
+                <strong>KEY INSIGHT:</strong> Four people were involved in this conspiracy:<br><br>
+                1. Someone who DESIGNED the toxin (scientific knowledge)<br>
+                2. Someone who PREPARED the toxin (lab access)<br>
+                3. Someone who PAID for the execution (financial resources)<br>
+                4. Someone who DELIVERED the toxin (trusted access to victim)<br><br>
+                Identify which suspects fit which roles.
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Return to Investigation</a>
+    </div>
+</body>
+</html>

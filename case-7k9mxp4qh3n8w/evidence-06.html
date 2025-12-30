@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE 06 :: WITNESS STATEMENTS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #050814; color: #00f7ff; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 20px; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(0, 247, 255, 0.03) 0px, transparent 1px, transparent 2px, rgba(0, 247, 255, 0.03) 3px); pointer-events: none; animation: scanlines 8s linear infinite; z-index: 1; }
+        @keyframes scanlines { 0% { transform: translateY(0); } 100% { transform: translateY(10px); } }
+        .container { max-width: 1100px; margin: 0 auto; background: rgba(5, 8, 20, 0.95); border: 2px solid #00f7ff; padding: 40px; position: relative; z-index: 2; box-shadow: 0 0 40px rgba(0, 247, 255, 0.3); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #ff006e; }
+        h1 { font-family: 'Orbitron', sans-serif; color: #ff006e; font-size: 32px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 0, 110, 0.8); }
+        .evidence-number { font-family: 'Share Tech Mono', monospace; color: #ffd700; font-size: 14px; letter-spacing: 2px; }
+        .info-box { background: rgba(255, 215, 0, 0.1); border-left: 4px solid #ffd700; padding: 15px 20px; margin: 20px 0; font-family: 'Share Tech Mono', monospace; font-size: 13px; }
+        .statement { margin: 30px 0; background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.9) 100%); border: 1px solid #00f7ff; padding: 25px; }
+        .statement.flagged { border: 2px solid #ff006e; background: rgba(255, 0, 110, 0.08); }
+        .statement-header { border-bottom: 2px solid rgba(0, 247, 255, 0.3); padding-bottom: 15px; margin-bottom: 20px; }
+        .witness-name { font-family: 'Orbitron', sans-serif; color: #ff006e; font-size: 20px; margin-bottom: 10px; }
+        .witness-info { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: #00f7ff; margin: 5px 0; }
+        .statement-body { line-height: 1.8; font-size: 15px; padding: 20px; background: rgba(0, 0, 0, 0.3); }
+        .interrogator { color: #ffd700; font-weight: bold; margin: 15px 0 5px 0; }
+        .response { color: #00f7ff; margin-left: 20px; margin-bottom: 15px; }
+        .note { background: rgba(255, 0, 110, 0.1); border-left: 3px solid #ff006e; padding: 15px; margin: 20px 0; font-size: 14px; }
+        .note-title { color: #ff006e; font-weight: bold; margin-bottom: 8px; }
+        .back-link { display: inline-block; margin-top: 30px; padding: 12px 24px; background: rgba(0, 247, 255, 0.2); border: 1px solid #00f7ff; color: #00f7ff; text-decoration: none; font-family: 'Share Tech Mono', monospace; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { background: #00f7ff; color: #050814; box-shadow: 0 0 20px rgba(0, 247, 255, 0.6); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>WITNESS STATEMENTS</h1>
+            <div class="evidence-number">EVIDENCE FILE #06 :: CASE #2847-NGT</div>
+        </div>
+
+        <div class="info-box">
+            <strong>CONDUCTED BY:</strong> Detective Hiroshi Nakamura<br>
+            <strong>DATE:</strong> November 24-26, 2084<br>
+            <strong>WITNESSES:</strong> Security staff, lab technicians
+        </div>
+
+        <div class="statement">
+            <div class="statement-header">
+                <div class="witness-name">WITNESS #1: KENJI WATANABE</div>
+                <div class="witness-info">Senior Security Guard | Interview: Nov 24, 10:15 JST</div>
+            </div>
+            <div class="statement-body">
+                <div class="interrogator">DETECTIVE: Describe your November 23rd evening shift.</div>
+                <div class="response">Main security desk, 20:00-04:00. Quiet night. Monitored entry/exit activity.</div>
+                <div class="interrogator">DETECTIVE: Anything unusual?</div>
+                <div class="response">No sir. Chen left 23:35, Foster around 22:55. Chief Armstrong was in SOC all evening.</div>
+                <div class="interrogator">DETECTIVE: You saw Armstrong?</div>
+                <div class="response">Yes. Delivered paperwork to SOC around 22:00. He was monitoring screens. Saw him again at 23:15, still there, on phone.</div>
+            </div>
+            <div class="note">
+                <div class="note-title">ANALYST NOTE:</div>
+                Watanabe provides alibi confirmation for Armstrong at 22:00 and 23:15. However, there's a 75-minute gap with no visual confirmation.
+            </div>
+        </div>
+
+        <div class="statement flagged">
+            <div class="statement-header">
+                <div class="witness-name">WITNESS #2: DR. LISA CHEN</div>
+                <div class="witness-info">Lab Technician, Floor 43 Medical | Interview: Nov 24, 16:20 JST</div>
+            </div>
+            <div class="statement-body">
+                <div class="interrogator">DETECTIVE: What do you know about Dr. Yamamoto's gene therapy preparations?</div>
+                <div class="response">Dr. Foster personally prepared all executive therapy doses. Very secretive about it - only he had access to the formulation records.</div>
+                <div class="interrogator">DETECTIVE: Did you work on November 21st when Yamamoto's dose was prepared?</div>
+                <div class="response">Yes. Dr. Foster used the CRISPR synthesis equipment from 08:00-13:12. I was in the adjacent lab. Around 11:30, Dr. Volkov came in and they had a private conversation in the synthesis room for maybe 20 minutes.</div>
+                <div class="interrogator">DETECTIVE: Could you hear what they discussed?</div>
+                <div class="response">The door was closed, but voices were raised. I heard Dr. Volkov say something like "you owe me this" and Dr. Foster replied "I know what's at stake." Then silence.</div>
+            </div>
+            <div class="note">
+                <div class="note-title">⚠️ CRITICAL EVIDENCE:</div>
+                This places Volkov WITH Foster during Yamamoto's toxin preparation on Nov 21. Their conversation suggests collaboration and shared stakes in the outcome.
+            </div>
+        </div>
+
+        <div class="statement flagged">
+            <div class="statement-header">
+                <div class="witness-name">WITNESS #3: HIROSHI NAKAMURA</div>
+                <div class="witness-info">Delivery Driver, Medical Supplies | Interview: Nov 25, 09:40 JST</div>
+            </div>
+            <div class="statement-body">
+                <div class="interrogator">DETECTIVE: Tell me about your November 22nd delivery to NGT.</div>
+                <div class="response">I deliver medical supplies every Friday. November 22nd was normal - dropped off supplies at Medical Division, Floor 43, at 08:45 JST.</div>
+                <div class="interrogator">DETECTIVE: Did you see anyone from NGT?</div>
+                <div class="response">Yes, a young woman - petite, black hair, glasses - she signed for the delivery. Very quiet. She seemed nervous, kept checking her phone.</div>
+                <div class="interrogator">DETECTIVE: Can you identify her?</div>
+                <div class="response">[Shown photo lineup] Yes, that one. Yuki Tanaka.</div>
+                <div class="interrogator">DETECTIVE: What time did you leave?</div>
+                <div class="response">About 09:00. As I was leaving, I saw that same young woman at the medical refrigeration unit. She was placing a small package inside.</div>
+            </div>
+            <div class="note">
+                <div class="note-title">TIMELINE MATCH:</div>
+                This corroborates the burner phone text: "package will be delivered to medical refrigeration unit on Nov 22 at 09:00." Tanaka was seen handling a package at exactly that time/location.
+            </div>
+        </div>
+
+        <div class="statement">
+            <div class="statement-header">
+                <div class="witness-name">WITNESS #4: AKIKO YAMAMOTO</div>
+                <div class="witness-info">Victim's Wife | Interview: Nov 25, 14:15 JST</div>
+            </div>
+            <div class="statement-body">
+                <div class="interrogator">DETECTIVE: Mrs. Yamamoto, had your husband seemed worried recently?</div>
+                <div class="response">[Crying] Yes. The past month he barely slept. He said he'd discovered something terrible at work - trials that were hurting people. He wanted to do the right thing.</div>
+                <div class="interrogator">DETECTIVE: Did he mention feeling threatened?</div>
+                <div class="response">On November 20th, he told me he'd made a backup of all his evidence and hidden it somewhere safe. He said "if anything happens to me, someone will find the truth." He was scared, detective. Someone killed my husband to keep him quiet.</div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255, 0, 110, 0.15); padding: 25px; margin: 30px 0; border: 2px solid #ff006e;">
+            <strong style="color: #ff006e; font-size: 18px;">WITNESS TESTIMONY SUMMARY:</strong><br><br>
+            1. Armstrong's alibi has gaps (75-minute window unaccounted)<br>
+            2. Volkov was WITH Foster during toxin preparation on Nov 21<br>
+            3. Tanaka was seen handling "package" at medical unit on Nov 22 at 09:00 (exact time from burner phone instructions)<br>
+            4. Yamamoto feared for his life and created evidence backup
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>

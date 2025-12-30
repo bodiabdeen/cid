@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE 02 :: FORENSIC TOXICOLOGY REPORT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050814;
+            color: #00f7ff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 247, 255, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 247, 255, 0.03) 3px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(5, 8, 20, 0.95);
+            border: 2px solid #00f7ff;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff006e;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff006e;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+        }
+
+        .evidence-number {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .info-box {
+            background: rgba(255, 0, 110, 0.1);
+            border-left: 4px solid #ff006e;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.8) 100%);
+            border-left: 3px solid #00f7ff;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffd700;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subsection {
+            margin: 20px 0;
+        }
+
+        .subsection-title {
+            color: #00f7ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .data-field {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .field-label {
+            color: #ffd700;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .field-value {
+            color: #00f7ff;
+        }
+
+        .critical {
+            background: rgba(255, 0, 110, 0.2);
+            padding: 20px;
+            border: 2px solid #ff006e;
+            margin: 20px 0;
+        }
+
+        .critical-title {
+            color: #ff006e;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            color: #ff006e;
+            font-weight: bold;
+        }
+
+        .note {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 3px solid #ffd700;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .technical-box {
+            background: rgba(0, 247, 255, 0.05);
+            border: 1px solid #00f7ff;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: rgba(0, 247, 255, 0.2);
+            border: 1px solid #00f7ff;
+            color: #00f7ff;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            background: #00f7ff;
+            color: #050814;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .data-field {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FORENSIC TOXICOLOGY REPORT</h1>
+            <div class="evidence-number">EVIDENCE FILE #02 :: CASE #2847-NGT</div>
+        </div>
+
+        <div class="info-box">
+            <strong>REPORT ID:</strong> NGT-TOX-2847-084<br>
+            <strong>SUBJECT:</strong> Dr. Kenji Yamamoto (Deceased)<br>
+            <strong>EXAMINER:</strong> Dr. Sarah Mitchell, Chief Medical Examiner, Neo-Tokyo Forensics<br>
+            <strong>DATE OF EXAMINATION:</strong> November 24, 2084<br>
+            <strong>TIME OF DEATH (ESTIMATED):</strong> November 23, 2084 at 22:47:33 JST (±90 seconds)<br>
+            <strong>CLASSIFICATION:</strong> Homicide - Targeted Gene-Editing Toxin
+        </div>
+
+        <div class="critical">
+            <div class="critical-title">⚠ EXECUTIVE SUMMARY ⚠</div>
+            Subject died from a sophisticated CRISPR-based toxin delivered via his personalized gene therapy regimen. The toxin was designed specifically to target Dr. Yamamoto's unique genetic markers, making it virtually undetectable in standard screening. This represents <span class="highlight">advanced knowledge of molecular biology and access to restricted synthesis equipment</span>. Death occurred approximately 15-17 minutes after administration.
+        </div>
+
+        <div class="section">
+            <div class="section-title">🔬 Toxicological Analysis</div>
+
+            <div class="subsection">
+                <div class="subsection-title">Primary Findings:</div>
+                
+                <div class="data-field">
+                    <div class="field-label">TOXIN CLASSIFICATION:</div>
+                    <div class="field-value">Modified CRISPR-Cas9 gene-editing complex with synthetic guide RNA</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">DELIVERY MECHANISM:</div>
+                    <div class="field-value">Lipid nanoparticle encapsulation (standard gene therapy vector)</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">TARGET SITE:</div>
+                    <div class="field-value">Cardiac sodium channel gene (SCN5A) - critical for heart function</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">MECHANISM OF ACTION:</div>
+                    <div class="field-value">Induced immediate and fatal cardiac arrhythmia via gene disruption</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">TIME TO EFFECT:</div>
+                    <div class="field-value">15-17 minutes post-administration (requires cellular uptake and gene editing)</div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Chemical Composition:</div>
+                <div class="technical-box">
+                    COMPONENT ANALYSIS:<br>
+                    - Cas9 nuclease enzyme: Modified variant (NGT-proprietary strain)<br>
+                    - Guide RNA sequence: Custom-designed to target victim's SCN5A gene<br>
+                    - Lipid nanoparticle shell: PEGylated liposome (medical-grade)<br>
+                    - Stabilizing buffer: Phosphate-buffered saline with trehalose<br>
+                    - Trace elements: Indicates synthesis within past 72 hours
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>CRITICAL OBSERVATION:</strong> The guide RNA was designed to match a specific genetic polymorphism unique to Dr. Yamamoto. Standard gene therapy screening would not detect this as abnormal because it appeared identical to his regular medication. Only post-mortem genetic sequencing revealed the lethal modification.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">💉 Source Analysis</div>
+
+            <div class="subsection">
+                <div class="subsection-title">Sample Origin:</div>
+                
+                <div class="data-field">
+                    <div class="field-label">RECOVERED SAMPLE:</div>
+                    <div class="field-value">Partially consumed gene therapy ampule from victim's lab</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">CONTAINER TYPE:</div>
+                    <div class="field-value">NGT Medical Division standard 5ml glass ampule</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">LOT NUMBER:</div>
+                    <div class="field-value">NGT-MED-Y2084-1123-KY</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">PREPARATION DATE:</div>
+                    <div class="field-value">November 21, 2084 (2 days before murder)</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">AUTHORIZED PREPARER:</div>
+                    <div class="field-value">Dr. Raymond Foster, Medical Division Director</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">CHAIN OF CUSTODY:</div>
+                    <div class="field-value">Medical Division (Floor 43) → Lab 12-A refrigeration unit</div>
+                </div>
+
+                <div class="data-field">
+                    <div class="field-label">DELIVERY PERSONNEL:</div>
+                    <div class="field-value">Yuki Tanaka (delivered November 22, 0900 JST)</div>
+                </div>
+            </div>
+
+            <div class="critical">
+                <div class="critical-title">🔍 TAMPERING ANALYSIS</div>
+                The ampule seal showed <span class="highlight">NO evidence of external tampering or resealing</span>. The toxin was incorporated during the preparation phase, not added afterward. This indicates the perpetrator either:
+                <ul>
+                    <li>Had direct access to the Medical Division synthesis equipment (Floor 43)</li>
+                    <li>Compromised the preparation process before the ampule was sealed</li>
+                    <li>Substituted a pre-prepared poisoned ampule for the legitimate one</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">⚕️ Medical Timeline & Symptoms</div>
+
+            <div class="technical-box">
+                <strong>22:30:47 JST - ADMINISTRATION</strong><br>
+                Dr. Yamamoto self-administered 3.2ml of gene therapy via auto-injector (standard dose). Lab equipment logs confirm timestamp. No witnesses present due to privacy protocol.
+                <br><br>
+                <strong>22:31 - 22:45 JST - ASYMPTOMATIC PERIOD</strong><br>
+                Toxin requires cellular uptake and gene editing to take effect. Subject continued working at terminal, showing no distress. Workstation logs show normal typing patterns and system interactions.
+                <br><br>
+                <strong>22:45:30 JST (ESTIMATED) - ONSET OF SYMPTOMS</strong><br>
+                Terminal activity ceased abruptly. Based on autopsy findings, subject experienced sudden chest pain, extreme tachycardia (heart rate >180 bpm), and difficulty breathing.
+                <br><br>
+                <strong>22:47:33 JST - CARDIAC ARREST</strong><br>
+                Fatal arrhythmia caused complete cardiac failure. Death occurred within 2-3 minutes of symptom onset. Subject collapsed at his workstation. Medical intervention impossible given rapid progression.
+                <br><br>
+                <strong>23:14:37 JST - BODY DISCOVERED</strong><br>
+                Security Chief Armstrong entered lab via emergency override after noticing lack of exit in security monitoring. Found subject deceased at terminal, consistent with sudden cardiac event.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🧬 Technical Expertise Required</div>
+
+            <div class="subsection">
+                <div class="subsection-title">Perpetrator Capabilities Assessment:</div>
+                <p style="margin: 15px 0; line-height: 1.7;">
+                    Creating this toxin required advanced specialized knowledge and access to restricted equipment. The following capabilities were <span class="highlight">ESSENTIAL</span>:
+                </p>
+
+                <ul>
+                    <li><strong>Molecular Biology Expertise:</strong> PhD-level understanding of CRISPR gene-editing mechanisms</li>
+                    <li><strong>Genetic Sequencing Knowledge:</strong> Access to Dr. Yamamoto's complete genetic profile to design targeted guide RNA</li>
+                    <li><strong>Laboratory Skills:</strong> Hands-on experience with gene synthesis and purification techniques</li>
+                    <li><strong>Equipment Access:</strong> ALPHA clearance or higher to access CRISPR synthesis equipment</li>
+                    <li><strong>Medical Knowledge:</strong> Understanding of personalized gene therapy protocols and delivery timing</li>
+                    <li><strong>Preparation Time:</strong> Minimum 48-72 hours to synthesize and quality-test the toxin</li>
+                </ul>
+
+                <div class="note">
+                    <strong>INVESTIGATOR ASSESSMENT:</strong> This level of sophistication eliminates opportunistic scenarios. The murder was meticulously planned by someone with intimate knowledge of Dr. Yamamoto's medical routine and access to NGT's most restricted facilities. The perpetrator either possesses these capabilities directly OR collaborated with someone who does.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📋 Equipment Access Records</div>
+
+            <div class="subsection">
+                <div class="subsection-title">CRISPR Synthesis Equipment Usage (Nov 19-22, 2084):</div>
+                
+                <div class="technical-box">
+                    <strong>Location:</strong> Floor 43, Medical Division Synthesis Lab<br>
+                    <strong>Equipment:</strong> CRISPR-Gen 9000 Automated Synthesis Station<br>
+                    <strong>Clearance Required:</strong> ALPHA or higher<br><br>
+
+                    <strong>USAGE LOG:</strong><br>
+                    Nov 19, 14:22 JST - Dr. Elena Volkov (4h 17m session)<br>
+                    Nov 20, 09:15 JST - Dr. Raymond Foster (2h 43m session)<br>
+                    Nov 20, 16:30 JST - Dr. Elena Volkov (3h 55m session)<br>
+                    Nov 21, 08:00 JST - Dr. Raymond Foster (5h 12m session) <span class="highlight">[YAMAMOTO DOSE PREPARED]</span><br>
+                    Nov 21, 19:45 JST - Dr. Elena Volkov (1h 22m session)<br>
+                    Nov 22, 11:30 JST - Dr. Raymond Foster (1h 08m session)
+                </div>
+
+                <div class="note">
+                    <strong>ANALYSIS:</strong> Dr. Foster prepared Dr. Yamamoto's gene therapy dose on November 21 during a 5-hour session. This is his standard monthly preparation routine. However, Dr. Volkov also had extensive access to the same equipment in the days immediately before and after. Both scientists have the technical capability to synthesize the toxin.
+                </div>
+            </div>
+        </div>
+
+        <div class="critical">
+            <div class="critical-title">🎯 CONCLUSIVE EVIDENCE</div>
+            <p style="margin: 15px 0; line-height: 1.8;">
+                The toxin's design demonstrates <span class="highlight">PERFECT knowledge of Dr. Yamamoto's genetic profile</span> - information stored in NGT's secure medical database. Database access logs for the victim's genetic file show THREE accesses in the week before the murder:
+            </p>
+            <ul>
+                <li><strong>Nov 17, 2084:</strong> Dr. Raymond Foster (routine medical review)</li>
+                <li><strong>Nov 19, 2084:</strong> Dr. Elena Volkov (research purposes - authorized)</li>
+                <li><strong>Nov 20, 2084:</strong> Yuki Tanaka (lab preparation - authorized by Yamamoto)</li>
+            </ul>
+            <p style="margin: 15px 0; line-height: 1.8;">
+                All three individuals had the genetic information necessary to design the targeted toxin. No unauthorized access detected.
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📊 Comparative Analysis</div>
+
+            <div class="note">
+                <strong>QUESTION:</strong> Could someone without direct expertise have obtained the toxin from an external source?<br><br>
+                <strong>ANSWER:</strong> Highly unlikely. The toxin's design required Dr. Yamamoto's specific genetic sequence (stored only in NGT's secure database). External synthesis would require providing this confidential data to a third party, creating an unacceptable security risk that professionals like Chen or Armstrong would recognize. Additionally, the toxin used NGT's proprietary Cas9 variant, available only within the company. External procurement would leave financial and communication trails.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>

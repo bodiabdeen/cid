@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIDENCE 01 :: SECURITY ACCESS LOGS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050814;
+            color: #00f7ff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 247, 255, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 247, 255, 0.03) 3px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(5, 8, 20, 0.95);
+            border: 2px solid #00f7ff;
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(0, 247, 255, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff006e;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff006e;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+        }
+
+        .evidence-number {
+            font-family: 'Share Tech Mono', monospace;
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+        }
+
+        .log-section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffd700;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .log-table table {
+            width: 100%;
+            min-width: 800px;
+        }
+
+        .log-table th {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 2px solid #ffd700;
+            position: sticky;
+            top: 0;
+        }
+
+        .log-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+            color: #00f7ff;
+        }
+
+        .log-table tr:hover {
+            background: rgba(0, 247, 255, 0.1);
+        }
+
+        .highlight {
+            background: rgba(255, 0, 110, 0.2);
+            color: #ff006e;
+            font-weight: bold;
+        }
+
+        .suspicious {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+        }
+
+        .note {
+            background: rgba(0, 247, 255, 0.1);
+            border-left: 3px solid #00f7ff;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .note-title {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: rgba(0, 247, 255, 0.2);
+            border: 1px solid #00f7ff;
+            color: #00f7ff;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            background: #00f7ff;
+            color: #050814;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .log-table {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SECURITY ACCESS LOGS</h1>
+            <div class="evidence-number">EVIDENCE FILE #01 :: CASE #2847-NGT</div>
+        </div>
+
+        <div class="info-box">
+            <strong>DOCUMENT TYPE:</strong> Biometric Access Control System Logs<br>
+            <strong>LOCATION:</strong> Floor 47, NGT Headquarters<br>
+            <strong>DATE RANGE:</strong> November 23, 2084 (18:00 - 24:00 JST)<br>
+            <strong>AUTHENTICATION:</strong> Retinal scan + RFID badge + fingerprint verification<br>
+            <strong>VERIFIED BY:</strong> Detective Hiroshi Nakamura, Cyber-Homicide Division
+        </div>
+
+        <div class="log-section">
+            <div class="section-title">Floor 47 Access Records - November 23, 2084</div>
+            
+            <div class="note">
+                <div class="note-title">INVESTIGATOR NOTE:</div>
+                Floor 47 is a restricted research area requiring ALPHA clearance or higher. All entry/exit events are logged with precise timestamps and biometric verification. Dr. Yamamoto's personal lab (12-A) requires additional authorization even with proper clearance. System shows no tampering or anomalies in the security infrastructure.
+            </div>
+
+            <div class="log-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIME (JST)</th>
+                            <th>NAME</th>
+                            <th>BADGE ID</th>
+                            <th>CLEARANCE</th>
+                            <th>ACTION</th>
+                            <th>LOCATION</th>
+                            <th>VERIFICATION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18:23:17</td>
+                            <td>Yamamoto, Kenji</td>
+                            <td>NGT-0147</td>
+                            <td>OMEGA</td>
+                            <td>ENTRY</td>
+                            <td>Floor 47 Main</td>
+                            <td>RETINA+BADGE+PRINT</td>
+                        </tr>
+                        <tr>
+                            <td>18:24:05</td>
+                            <td>Yamamoto, Kenji</td>
+                            <td>NGT-0147</td>
+                            <td>OMEGA</td>
+                            <td>ENTRY</td>
+                            <td>Lab 12-A</td>
+                            <td>BADGE+PRINT</td>
+                        </tr>
+                        <tr>
+                            <td>19:41:22</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>ENTRY</td>
+                            <td>Floor 47 Main</td>
+                            <td>RETINA+BADGE+PRINT</td>
+                        </tr>
+                        <tr>
+                            <td>19:42:11</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>ENTRY</td>
+                            <td>Lab 12-A</td>
+                            <td>BADGE+AUTHORIZED BY: Yamamoto</td>
+                        </tr>
+                        <tr>
+                            <td>20:18:33</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>EXIT</td>
+                            <td>Lab 12-A</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr>
+                            <td>20:19:08</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>EXIT</td>
+                            <td>Floor 47 Main</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>21:15:44</td>
+                            <td>Volkov, Elena</td>
+                            <td>NGT-0523</td>
+                            <td>ALPHA</td>
+                            <td>ENTRY</td>
+                            <td>Floor 47 Main</td>
+                            <td>RETINA+BADGE+PRINT</td>
+                        </tr>
+                        <tr>
+                            <td>21:16:29</td>
+                            <td>Volkov, Elena</td>
+                            <td>NGT-0523</td>
+                            <td>ALPHA</td>
+                            <td>ENTRY</td>
+                            <td>Office 47-18</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr>
+                            <td>21:42:51</td>
+                            <td>Volkov, Elena</td>
+                            <td>NGT-0523</td>
+                            <td>ALPHA</td>
+                            <td>EXIT</td>
+                            <td>Office 47-18</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>21:43:17</td>
+                            <td>Volkov, Elena</td>
+                            <td>NGT-0523</td>
+                            <td>ALPHA</td>
+                            <td>EXIT</td>
+                            <td>Floor 47 Main</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>22:15:09</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>ENTRY</td>
+                            <td>Floor 47 Main</td>
+                            <td>RETINA+BADGE+PRINT</td>
+                        </tr>
+                        <tr>
+                            <td>22:16:44</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>ENTRY</td>
+                            <td>Lab 12-A</td>
+                            <td>BADGE+AUTHORIZED BY: Yamamoto</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>22:33:52</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>EXIT</td>
+                            <td>Lab 12-A</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>22:34:26</td>
+                            <td>Tanaka, Yuki</td>
+                            <td>NGT-2847</td>
+                            <td>GAMMA</td>
+                            <td>EXIT</td>
+                            <td>Floor 47 Main</td>
+                            <td>BADGE</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>23:14:37</td>
+                            <td>Security Override</td>
+                            <td>EMERGENCY</td>
+                            <td>-</td>
+                            <td>ENTRY</td>
+                            <td>Lab 12-A</td>
+                            <td>EMERGENCY PROTOCOL</td>
+                        </tr>
+                        <tr>
+                            <td>23:14:37</td>
+                            <td>Armstrong, Jackson</td>
+                            <td>NGT-0089</td>
+                            <td>OMEGA-SEC</td>
+                            <td>-</td>
+                            <td>Lab 12-A</td>
+                            <td>OVERRIDE AUTHORIZED</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                <div class="note-title">CRITICAL OBSERVATIONS:</div>
+                1. Yuki Tanaka was the last person to see Dr. Yamamoto alive (22:16-22:33 JST)<br>
+                2. Dr. Yamamoto never exited Lab 12-A after entering at 18:24 JST<br>
+                3. No other personnel entered the lab between Tanaka's departure (22:33 JST) and discovery of body (23:14 JST)<br>
+                4. Dr. Elena Volkov accessed Floor 47 during the critical timeframe but only entered her office<br>
+                5. Time of death estimated at 22:47:33 JST - approximately 14 minutes after Tanaka left
+            </div>
+        </div>
+
+        <div class="log-section">
+            <div class="section-title">Additional Floor Access (Same Time Period)</div>
+
+            <div class="log-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>FLOOR</th>
+                            <th>NAME</th>
+                            <th>TIME IN</th>
+                            <th>TIME OUT</th>
+                            <th>NOTES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Floor 43 (Medical)</td>
+                            <td>Foster, Raymond</td>
+                            <td>19:30:15</td>
+                            <td>22:52:44</td>
+                            <td>Director's Office</td>
+                        </tr>
+                        <tr>
+                            <td>Floor 52 (Executive)</td>
+                            <td>Chen, Marcus</td>
+                            <td>19:45:22</td>
+                            <td>23:27:18</td>
+                            <td>CFO Office</td>
+                        </tr>
+                        <tr class="suspicious">
+                            <td>Floor 5 (Security)</td>
+                            <td>Armstrong, Jackson</td>
+                            <td>20:58:09</td>
+                            <td>23:33:51</td>
+                            <td>Security Operations Center</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                <div class="note-title">ANALYST COMMENTARY:</div>
+                While Floors 43, 52, and 5 are separate from Floor 47, several suspects had access during the critical period. Dr. Foster (Floor 43) and Marcus Chen (Floor 52) were in the building but no logs show them accessing Floor 47. Jackson Armstrong was in the Security Operations Center, which has private elevator access to all floors that does NOT trigger standard badge logs. This is a security feature allowing rapid response to emergencies.
+            </div>
+        </div>
+
+        <div class="log-section">
+            <div class="section-title">Lab 12-A Internal Access Logs</div>
+
+            <div class="log-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIME (JST)</th>
+                            <th>USER</th>
+                            <th>EQUIPMENT ACCESSED</th>
+                            <th>DURATION</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18:31:44</td>
+                            <td>Yamamoto, K.</td>
+                            <td>Workstation Terminal A</td>
+                            <td>3h 42m</td>
+                            <td>Session ended 22:13:22</td>
+                        </tr>
+                        <tr>
+                            <td>19:45:18</td>
+                            <td>Tanaka, Y.</td>
+                            <td>Sample Refrigeration Unit</td>
+                            <td>4m</td>
+                            <td>Normal access</td>
+                        </tr>
+                        <tr>
+                            <td>19:51:03</td>
+                            <td>Tanaka, Y.</td>
+                            <td>Centrifuge Station 2</td>
+                            <td>18m</td>
+                            <td>Normal access</td>
+                        </tr>
+                        <tr>
+                            <td>20:12:37</td>
+                            <td>Tanaka, Y.</td>
+                            <td>Gene Sequencer</td>
+                            <td>5m</td>
+                            <td>Normal access</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>22:18:55</td>
+                            <td>Tanaka, Y.</td>
+                            <td>Medical Supply Cabinet</td>
+                            <td>2m</td>
+                            <td>Retrieved supplement dose</td>
+                        </tr>
+                        <tr>
+                            <td>22:25:12</td>
+                            <td>Yamamoto, K.</td>
+                            <td>Environmental Controls</td>
+                            <td>1m</td>
+                            <td>Privacy mode activated</td>
+                        </tr>
+                        <tr class="suspicious">
+                            <td>22:30:47</td>
+                            <td>Yamamoto, K.</td>
+                            <td>Personal Medical Station</td>
+                            <td>-</td>
+                            <td>Gene therapy administered</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                <div class="note-title">FORENSIC TIMELINE:</div>
+                Dr. Yamamoto activated "privacy mode" at 22:25:12 JST, which disables internal cameras but maintains equipment logging. He administered his daily gene therapy dose at 22:30:47 JST - this matches his routine documented over the past three years. The toxin would have taken approximately 15-17 minutes to cause death, placing time of death at approximately 22:47 JST, consistent with autopsy findings.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Return to Investigation Hub</a>
+        </div>
+    </div>
+</body>
+</html>
