@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
     <title>سري للغاية :: قاعدة بيانات التحقيقات الجنائية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,6 +145,7 @@
             z-index: 10;
             max-width: 520px;
             width: 100%;
+            padding: 0 10px;
         }
 
         /* Glitch title effect */
@@ -552,13 +552,32 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .nexus-logo {
-                font-size: 32px;
-                letter-spacing: 3px;
+                font-size: 28px;
+                letter-spacing: 2px;
+            }
+
+            .protocol-text {
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+
+            .header-section {
+                margin-bottom: 30px;
             }
 
             .hex-frame {
-                padding: 40px 30px;
+                padding: 30px 20px;
+            }
+
+            .system-status {
+                font-size: 9px;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             input {
@@ -569,7 +588,47 @@
             .init-button {
                 font-size: 14px;
                 padding: 16px;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
+            }
+
+            .warning-panel {
+                font-size: 10px;
+                padding: 12px;
+                line-height: 1.6;
+            }
+
+            .field-label {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nexus-logo {
+                font-size: 24px;
+                letter-spacing: 1px;
+            }
+
+            .protocol-text {
+                font-size: 10px;
+            }
+
+            .hex-frame {
+                padding: 25px 15px;
+                clip-path: polygon(
+                    20px 0, calc(100% - 20px) 0, 100% 20px,
+                    100% calc(100% - 20px), calc(100% - 20px) 100%,
+                    20px 100%, 0 calc(100% - 20px), 0 20px
+                );
+            }
+
+            input {
+                padding: 12px 14px;
+                font-size: 13px;
+            }
+
+            .init-button {
+                font-size: 13px;
+                padding: 14px;
             }
         }
 
