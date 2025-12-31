@@ -519,7 +519,7 @@
             <div class="request-icon">🔓</div>
             <h3>Need Access to Additional Cases?</h3>
             <p>If you require elevated clearance to classified investigations, submit your credentials for review.</p>
-            <a href="mailto:a.abdeen@live.com?subject=Request%20CID%20Case" class="request-btn">
+            <a href="/cdn-cgi/l/email-protection#076629666563626269476b6e71622964686a387472656d6264733a55627672627473223537444e4322353744667462" class="request-btn">
                 <span class="btn-icon">✉️</span>
                 Request Case Clearance
             </a>
@@ -531,23 +531,20 @@
         </div>
     </div>
     
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="auth.js"></script>
     <script>
-        // Case mapping
-        const cases = {
-            'CI-2847': { code: 'K7M9-PX4Q', url: 'case-7k9mxp4qh3n8w' },
-            'CI-5039': { code: 'H3N8-WR6L', url: 'case-2bc9tj5yr6lm4' },
-            'CI-6281': { code: 'T5YJ-9BC2', url: 'case-8xf3vq7nh2k9p' },
-            'CI-1867': { code: 'U69K-LBG9', url: 'case-irhb4qsoke106' }
-        };
-        
         function accessCase() {
-            const caseNumber = document.getElementById('caseNumber').value.toUpperCase().trim();
-            const authCode = document.getElementById('authCode').value.toUpperCase().trim();
+            const caseNumber = document.getElementById('caseNumber').value.trim();
+            const authCode = document.getElementById('authCode').value.trim();
             const errorMsg = document.getElementById('errorMsg');
             
-            if (cases[caseNumber] && cases[caseNumber].code === authCode) {
+            const caseFolder = authenticateCase(caseNumber, authCode);
+            
+            if (caseFolder) {
                 errorMsg.style.display = 'none';
-                window.location.href = cases[caseNumber].url;
+                window.location.href = caseFolder + '/index.html';
             } else {
                 errorMsg.style.display = 'block';
             }
