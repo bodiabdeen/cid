@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authentication</title>
+</head>
+<body>
+    <h1>Test Authentication</h1>
+    <form onsubmit="handleAuthentication(event)">
+        <div>
+            <label for="caseNumber">Case Number:</label>
+            <input type="text" id="caseNumber" value="CI-7395">
+        </div>
+        <div>
+            <label for="authCode">Auth Code:</label>
+            <input type="text" id="authCode" value="M4KP-7XN2">
+        </div>
+        <button type="submit" id="accessBtn">
+            <div class="button-corner tl"></div>
+            <div class="button-corner br"></div>
+            Access Records
+        </button>
+    </form>
+    <div id="errorMessage" style="display:none;">Invalid credentials</div>
+    <div id="terminalId">TEST-TERMINAL-001</div>
+
+    <div id="debug" style="margin-top: 20px; padding: 10px; background: #f0f0f0;">
+        <h3>Debug Output:</h3>
+        <pre id="debugOutput"></pre>
+    </div>
+
+    <script>
+// Criminal Investigation Database - Authentication Module
+const encodedCaseData = "ewogICJjYXNlcyI6IFsKICAgIHsKICAgICAgImNhc2VOdW1iZXIiOiAiQ0ktMjg0NyIsCiAgICAgICJhdXRoQ29kZSI6ICJLN005LVBYNFEiLAogICAgICAiZm9sZGVyIjogImNhc2UtN2s5bXhwNHFoM244dyIKICAgIH0sCiAgICB7CiAgICAgICJjYXNlTnVtYmVyIjogIkNJLTUwMzkiLAogICAgICAiYXV0aENvZGUiOiAiSDNOOC1XUjZMIiwKICAgICAgImZvbGRlciI6ICJjYXNlLTJiYzl0ajV5cjZsbTQiCiAgICB9LAogICAgewogICAgICAiY2FzZU51bWJlciI6ICJDSS02MjgxIiwKICAgICAgImF1dGhDb2RlIjogIlQ1WUotOUJDMiIsCiAgICAgICJmb2xkZXIiOiAiY2FzZS04eGYzdnE3bmgyazlwIgogICAgfSwKICAgIHsKICAgICAgImNhc2VOdW1iZXIiOiAiQ0ktMTg2NyIsCiAgICAgICJhdXRoQ29kZSI6ICJVNjlLLUxCRzkiLAogICAgICAiZm9sZGVyIjogImNhc2UtaXJoYjRxc29rZTEwNiIKICAgIH0sCiAgICB7CiAgICAgICJjYXNlTnVtYmVyIjogIkNJLTI1MDQiLAogICAgICAiYXV0aENvZGUiOiAiNTNDUy1IWDMwIiwKICAgICAgImZvbGRlciI6ICJjYXNlLWt5cGx6bGt1aWYxNzUiCiAgICB9LAogICAgewogICAgICAiY2FzZU51bWJlciI6ICJDSS00NzE0IiwKICAgICAgImF1dGhDb2RlIjogIk5SMVEtNTlHNyIsCiAgICAgICJmb2xkZXIiOiAiY2FzZS04aXV6amhhNzJjM2IyIgogICAgfSwKICAgIHsKICAgICAgImNhc2VOdW1iZXIiOiAiQ0ktNzM5NSIsCiAgICAgICJhdXRoQ29kZSI6ICJNNEtQLTdYTjIiLAogICAgICAiZm9sZGVyIjogImNhc2UtM3I4eWsybTdxbDVuNiIKICAgIH0KICBdCn0K";
+
+function getCaseDatabase() {
+    try {
+        const decoded = atob(encodedCaseData);
+        return JSON.parse(decoded);
+    } catch (e) {
+        console.error('Database access error');
+        return { cases: [] };
+    }
+}
+
+function normalizeInput(str) {
+    return str.replace(/\s+/g, '').toUpperCase();
+}
+
+function authenticateCase(caseNumber, authCode) {
+    const database = getCaseDatabase();
+    const normalizedCaseNum = normalizeInput(caseNumber);
+    const normalizedAuthCode = normalizeInput(authCode);
+    
+    document.getElementById('debugOutput').textContent = 
+        'Input:\n' +
+        '  Case: ' + caseNumber + ' -> ' + normalizedCaseNum + '\n' +
+        '  Auth: ' + authCode + ' -> ' + normalizedAuthCode + '\n\n' +
+        'Database cases:\n' +
+        JSON.stringify(database.cases, null, 2);
+    
+    const matchedCase = database.cases.find(caseData => {
+        return normalizeInput(caseData.caseNumber) === normalizedCaseNum &&
+               normalizeInput(caseData.authCode) === normalizedAuthCode;
+    });
+    
+    return matchedCase ? matchedCase.folder : null;
+}
+
+function handleAuthentication(event) {
+    event.preventDefault();
+    
+    const button = document.getElementById('accessBtn');
+    const errorMessage = document.getElementById('errorMessage');
+    const caseNumber = document.getElementById('caseNumber').value;
+    const authCode = document.getElementById('authCode').value;
+    
+    errorMessage.style.display = 'none';
+    button.textContent = 'Verifying...';
+    
+    setTimeout(() => {
+        const caseFolder = authenticateCase(caseNumber, authCode);
+        
+        if (caseFolder) {
+            button.textContent = 'Access Granted - Redirecting to: ' + caseFolder;
+            alert('Success! Would redirect to: ' + caseFolder + '/index.html');
+        } else {
+            button.textContent = 'Access Denied';
+            errorMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                button.textContent = 'Access Records';
+            }, 2000);
+        }
+    }, 500);
+}
+    </script>
+</body>
+</html>
