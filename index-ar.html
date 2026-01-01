@@ -423,6 +423,91 @@
             letter-spacing: 1px;
         }
         
+        /* Training Case Section - Arabic */
+        .training-section {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            direction: rtl;
+        }
+        
+        .training-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(217, 119, 6, 0.1) 10px,
+                rgba(217, 119, 6, 0.1) 20px
+            );
+            animation: shine 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        .training-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-section h3 {
+            font-size: 15px;
+            color: #78350f;
+            margin-bottom: 8px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-section p {
+            font-size: 12px;
+            color: #92400e;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: #92400e;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            background: #fffbeb;
+        }
+        
+        .training-btn .btn-icon {
+            font-size: 14px;
+        }
+        
         .lang-switch {
             position: absolute;
             top: 30px;
@@ -481,6 +566,21 @@
         
         <p class="tagline">الوصول إلى ملفات القضايا السرية. أدخل بيانات الاعتماد الخاصة بك لبدء التحقيق.</p>
         
+        <!-- Training Case Section - Arabic -->
+        <div class="training-section">
+            <div class="training-icon">🎓</div>
+            <h3>جديد على CID؟ جرّب القضية التدريبية</h3>
+            <p>تدرب على مهارات التحقيق مع قضية بسيطة مصممة لتعليمك كيفية التحقيق في الجرائم وحل الألغاز.</p>
+            <a href="case-training-ar/index.html" class="training-btn">
+                <span class="btn-icon">▶️</span>
+                ابدأ القضية التدريبية
+            </a>
+        </div>
+        
+        <div class="divider">
+            <span>الوصول إلى القضايا الكاملة</span>
+        </div>
+        
         <div class="form-container">
             <div class="input-group">
                 <label for="caseNumber">🔢 رقم القضية</label>
@@ -519,7 +619,7 @@
         <div class="request-access-box">
             <div class="request-icon">🔓</div>
             <h3>هل تحتاج إلى الوصول لقضايا إضافية؟</h3>
-            <p>إذا كنت بحاجة إلى تصريح أمني متقدم للتحقيقات السرية، أرسل بريداً إلكترونياً إلى <strong>a.abdeen@live.com</strong> وقم بتضمين في سطر الموضوع: <strong>"طلب الوصول لقضايا CID"</strong></p>
+            <p>إذا كنت بحاجة إلى تصريح أمني متقدم للتحقيقات السرية، أرسل بريداً إلكترونياً إلى <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8b9f6b9babcbdbdb698b4b1aebdf6bbb7b5">[email&#160;protected]</a></strong> وقم بتضمين في سطر الموضوع: <strong>"طلب الوصول لقضايا CID"</strong></p>
             <div class="request-note">وقت الاستجابة: 24-48 ساعة · يتطلب التحقق الأمني</div>
         </div>
         
@@ -529,7 +629,7 @@
     </div>
     
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="auth.js"></script>
     <script>
         function accessCase() {
@@ -553,12 +653,3 @@
                 accessCase();
             }
         });
-        
-        document.getElementById('caseNumber').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                accessCase();
-            }
-        });
-    </script>
-</body>
-</html>
