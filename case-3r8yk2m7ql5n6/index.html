@@ -281,9 +281,307 @@
                 left: 15px;
             }
         }
+
+        /* Investigation Toolkit Modal - Arabic Theme */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 14, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(61, 36, 20, 0.9), rgba(26, 14, 0, 0.9));
+            border: 3px solid #8b6f47;
+            border-radius: 10px;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h3 {
+            font-family: 'Amiri', serif;
+            color: #d4af37;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+        }
+
+        .feature-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .feature-btn {
+            background: rgba(139, 111, 71, 0.3);
+            border: 2px solid #8b6f47;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            color: #d4c5a9;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .feature-btn:hover {
+            background: rgba(139, 111, 71, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-btn.active {
+            background: rgba(212, 175, 55, 0.4);
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 1.8em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .instructions-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .instructions-content.active {
+            display: block;
+        }
+
+        .quick-steps {
+            background: rgba(61, 36, 20, 0.5);
+            border-right: 3px solid #8b6f47;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .quick-steps strong {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .quick-steps ul {
+            color: #d4c5a9;
+            padding-right: 20px;
+            line-height: 1.6;
+            list-style-position: inside;
+        }
+
+        .quick-steps li {
+            margin-bottom: 3px;
+        }
+
+        .close-modal-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            background: linear-gradient(45deg, #8b6f47, #d4af37);
+            color: #1a0e00;
+            padding: 12px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .close-modal-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .toolkit-btn {
+            display: inline-block;
+            background: rgba(139, 111, 71, 0.4);
+            border: 2px solid #8b6f47;
+            color: #d4af37;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .toolkit-btn:hover {
+            background: rgba(139, 111, 71, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Custom scrollbar for modal */
+        .modal-content::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(61, 36, 20, 0.5);
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #8b6f47;
+            border-radius: 5px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
     </style>
 </head>
 <body>
+    <!-- Investigation Toolkit Modal -->
+    <div id="instructionsModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🛠️ أدوات التحقيق</h3>
+                <p style="color: #d4c5a9; font-size: 0.85em; margin: 0;">اختر الميزة المطلوبة:</p>
+            </div>
+
+            <div class="feature-buttons">
+                <div class="feature-btn active" onclick="showFeature('translate')">
+                    <span class="feature-icon">🌐</span>
+                    ترجمة الصفحة
+                </div>
+                <div class="feature-btn" onclick="showFeature('listen')">
+                    <span class="feature-icon">🔊</span>
+                    الاستماع للصفحة
+                </div>
+            </div>
+
+            <div id="translateContent" class="instructions-content active">
+                <div class="quick-steps">
+                    <strong>🖥️ كروم / إيدج / أندرويد</strong>
+                    <ul>
+                        <li>انقر بزر الماوس الأيمن → "ترجمة"</li>
+                        <li>أو انقر على أيقونة الترجمة في شريط العنوان</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>🍎 سفاري (ماك/آيفون/آيباد)</strong>
+                    <ul>
+                        <li>انقر على أيقونة aA في شريط العنوان</li>
+                        <li>اختر "ترجمة إلى [اللغة]"</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>🦊 فايرفوكس</strong>
+                    <ul>
+                        <li>ثبت إضافة "Firefox Translations"</li>
+                        <li>انقر على الإضافة للترجمة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="listenContent" class="instructions-content">
+                <div class="quick-steps">
+                    <strong>🌐 مايكروسوفت إيدج (موصى به)</strong>
+                    <ul>
+                        <li>اضغط Ctrl+Shift+U (ويندوز)</li>
+                        <li>أو Cmd+Shift+U (ماك)</li>
+                        <li>اختر "قراءة هذه الصفحة بصوت عالٍ"</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>🖥️ كروم</strong>
+                    <ul>
+                        <li>انقر بزر الماوس الأيمن على النص</li>
+                        <li>اختر "قراءة بصوت عالٍ"</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>🦊 فايرفوكس</strong>
+                    <ul>
+                        <li>القائمة (☰) → "قراءة بصوت عالٍ"</li>
+                        <li>أو اضغط Ctrl+Alt+R</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>🍎 سفاري (ماك)</strong>
+                    <ul>
+                        <li>حدد النص → انقر بزر الماوس الأيمن</li>
+                        <li>الكلام → "بدء التحدث"</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>📱 آيفون/آيباد</strong>
+                    <ul>
+                        <li>الإعدادات → إمكانية الوصول → المحتوى المنطوق</li>
+                        <li>فعّل "نطق الشاشة"</li>
+                        <li>اسحب لأسفل بإصبعين للاستماع</li>
+                    </ul>
+                </div>
+
+                <div class="quick-steps">
+                    <strong>📱 أندرويد</strong>
+                    <ul>
+                        <li>الإعدادات → إمكانية الوصول → Select to Speak</li>
+                        <li>انقر على أيقونة إمكانية الوصول ثم النص</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="close-modal-btn" onclick="closeInstructions()">
+                ▶ ابدأ التحقيق
+            </button>
+        </div>
+    </div>
+
     <div class="detective-icon">🕵️</div>
 
     <div class="container">
@@ -313,6 +611,9 @@
 
         <div class="warning-box">
             الجريمة وقعت قبل توقيع الوصية الجديدة مباشرة. المشتبه بهم الخمسة كانوا جميعاً في المزرعة مساء ذلك اليوم. يجب تحليل جميع الأدلة بعناية فائقة. القاتل بينهم.
+            <div style="text-align: center;">
+                <button class="toolkit-btn" onclick="showInstructions()">🛠️ أدوات التحقيق</button>
+            </div>
         </div>
 
         <div class="section">
@@ -412,5 +713,50 @@
             <p>المحقق الرئيسي: النقيب أحمد الزهراني | نوفمبر 2024</p>
         </footer>
     </div>
+
+    <script>
+        // Modal control functions
+        function showInstructions() {
+            const modal = document.getElementById('instructionsModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeInstructions() {
+            const modal = document.getElementById('instructionsModal');
+            modal.classList.add('hidden');
+        }
+
+        function showFeature(feature) {
+            // Update active button
+            const buttons = document.querySelectorAll('.feature-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.feature-btn').classList.add('active');
+
+            // Show corresponding content
+            const contents = document.querySelectorAll('.instructions-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            if (feature === 'translate') {
+                document.getElementById('translateContent').classList.add('active');
+            } else if (feature === 'listen') {
+                document.getElementById('listenContent').classList.add('active');
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('instructionsModal');
+            if (event.target === modal) {
+                closeInstructions();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeInstructions();
+            }
+        });
+    </script>
 </body>
 </html>
