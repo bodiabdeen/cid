@@ -422,6 +422,91 @@
             letter-spacing: 1px;
         }
         
+        /* Training Case Section */
+        .training-section {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .training-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(217, 119, 6, 0.1) 10px,
+                rgba(217, 119, 6, 0.1) 20px
+            );
+            animation: shine 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        .training-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-section h3 {
+            font-size: 15px;
+            color: #78350f;
+            margin-bottom: 8px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-section p {
+            font-size: 12px;
+            color: #92400e;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: #92400e;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .training-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            background: #fffbeb;
+        }
+        
+        .training-btn .btn-icon {
+            font-size: 14px;
+        }
+        
         .lang-switch {
             position: absolute;
             top: 30px;
@@ -480,6 +565,21 @@
         
         <p class="tagline">Access classified case files. Enter your credentials to begin investigation.</p>
         
+        <!-- Training Case Section -->
+        <div class="training-section">
+            <div class="training-icon">🎓</div>
+            <h3>New to CID? Try the Training Case</h3>
+            <p>Practice your detective skills with a beginner-friendly case designed to teach you how to investigate crimes and solve mysteries.</p>
+            <a href="case-training-en/index.html" class="training-btn">
+                <span class="btn-icon">▶️</span>
+                Start Training Case
+            </a>
+        </div>
+        
+        <div class="divider">
+            <span>Access Full Cases</span>
+        </div>
+        
         <div class="form-container">
             <div class="input-group">
                 <label for="caseNumber">🔢 Case Number</label>
@@ -518,7 +618,7 @@
         <div class="request-access-box">
             <div class="request-icon">🔓</div>
             <h3>Need Access to Additional Cases?</h3>
-            <p>If you require elevated clearance to classified investigations, send an email to <strong>a.abdeen@live.com</strong> and include in the subject line: <strong>"Request CID Case Access"</strong></p>
+            <p>If you require elevated clearance to classified investigations, send an email to <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33521d52515756565d735f5a45561d505c5e">[email&#160;protected]</a></strong> and include in the subject line: <strong>"Request CID Case Access"</strong></p>
             <div class="request-note">Response time: 24-48 hours · Security verification required</div>
         </div>
         
@@ -528,7 +628,7 @@
     </div>
     
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="auth.js"></script>
     <script>
         function accessCase() {
@@ -551,13 +651,3 @@
             if (e.key === 'Enter') {
                 accessCase();
             }
-        });
-        
-        document.getElementById('caseNumber').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                accessCase();
-            }
-        });
-    </script>
-</body>
-</html>
