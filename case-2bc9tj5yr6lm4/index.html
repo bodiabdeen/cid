@@ -495,7 +495,7 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             transition: all 0.3s ease;
             z-index: 1001;
             display: flex;
@@ -505,86 +505,52 @@
         
         .print-case-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
         
         .print-case-btn svg {
             width: 20px;
             height: 20px;
         }
-        
-        /* Print modal styles */
-        .print-modal {
+
+        /* Loading overlay for print preparation */
+        .loading-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10001;
+            background: rgba(5, 8, 20, 0.95);
+            z-index: 10002;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
-        
-        .print-modal.active {
+
+        .loading-overlay.active {
             display: flex;
         }
-        
-        .print-modal-content {
-            background: #1a1a2e;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 2px solid #00f7ff;
-        }
-        
-        .print-modal-content h2 {
-            color: #ffd700;
+
+        .loading-spinner {
+            border: 5px solid rgba(0, 247, 255, 0.3);
+            border-top: 5px solid #00f7ff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
             margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
         }
-        
-        .print-modal-content p {
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
             color: #00f7ff;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        
-        .print-modal-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .modal-btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-btn-primary {
-            background: #667eea;
-            color: white;
-        }
-        
-        .modal-btn-primary:hover {
-            background: #5568d3;
-        }
-        
-        .modal-btn-secondary {
-            background: #e0e0e0;
-            color: #333;
-        }
-        
-        .modal-btn-secondary:hover {
-            background: #d0d0d0;
+            font-size: 1.2em;
+            font-family: 'Orbitron', sans-serif;
         }
 
         @media print {
@@ -692,6 +658,12 @@
                 ▶ START INVESTIGATION
             </button>
         </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Preparing case file for printing...</div>
     </div>
 
     <div class="container">
@@ -830,25 +802,12 @@
     </div>
 
     <!-- Print Case File Button -->
-    <button class="print-case-btn" onclick="showPrintModal()">
+    <button class="print-case-btn" onclick="printAllPages()">
         <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd"></path>
         </svg>
         Print Case
     </button>
-
-    <!-- Print Modal -->
-    <div class="print-modal" id="printModal">
-        <div class="print-modal-content">
-            <h2>📋 Print Case File</h2>
-            <p>This will open all case pages (case file and all 6 evidence files) in new tabs. You can then use your browser's Print function (Ctrl+P or Cmd+P) and select "Save as PDF" to create a complete case file.</p>
-            <p style="font-size: 0.9em; color: #ff006e;"><strong>Note:</strong> Hints and solution pages are excluded from printing.</p>
-            <div class="print-modal-buttons">
-                <button class="modal-btn modal-btn-primary" onclick="openAllPagesForPrint()">Open Pages</button>
-                <button class="modal-btn modal-btn-secondary" onclick="closePrintModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Investigation Toolkit Modal
@@ -887,13 +846,11 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeInstructions();
-                closePrintModal();
             }
         });
 
-        // Print Case File Functionality
+        // Print All Pages Functionality
         const CASE_PAGES = [
-            'index.html',
             'case-file.html',
             'evidence-security-logs.html',
             'evidence-email.html',
@@ -903,33 +860,211 @@
             'evidence-timeline.html'
         ];
 
-        function showPrintModal() {
-            document.getElementById('printModal').classList.add('active');
-        }
+        async function printAllPages() {
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.add('active');
 
-        function closePrintModal() {
-            document.getElementById('printModal').classList.remove('active');
-        }
+            try {
+                // Create a new window for printing
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                
+                // Write initial HTML structure with print-friendly styles
+                printWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>BioGenex Case File - Complete Investigation</title>
+                        <style>
+                            @page {
+                                margin: 2cm;
+                                size: A4;
+                            }
+                            
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            body {
+                                font-family: 'Georgia', 'Times New Roman', serif;
+                                font-size: 11pt;
+                                line-height: 1.6;
+                                color: #000;
+                                background: #fff;
+                            }
+                            
+                            .page-break {
+                                page-break-after: always;
+                                page-break-inside: avoid;
+                                margin: 50px 0;
+                                border-top: 3px double #333;
+                                padding-top: 30px;
+                            }
+                            
+                            h1 {
+                                color: #c00;
+                                border-bottom: 3px solid #c00;
+                                padding-bottom: 10px;
+                                margin-bottom: 20px;
+                                font-size: 24pt;
+                                page-break-after: avoid;
+                            }
+                            
+                            h2 {
+                                color: #333;
+                                margin-top: 25px;
+                                margin-bottom: 15px;
+                                font-size: 18pt;
+                                page-break-after: avoid;
+                            }
+                            
+                            h3 {
+                                color: #555;
+                                margin-top: 20px;
+                                margin-bottom: 10px;
+                                font-size: 14pt;
+                                page-break-after: avoid;
+                            }
+                            
+                            p {
+                                margin-bottom: 12px;
+                                text-align: justify;
+                            }
+                            
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin: 15px 0;
+                                page-break-inside: avoid;
+                            }
+                            
+                            th, td {
+                                border: 1px solid #333;
+                                padding: 8px;
+                                text-align: left;
+                            }
+                            
+                            th {
+                                background: #f0f0f0;
+                                font-weight: bold;
+                            }
+                            
+                            ul, ol {
+                                margin-left: 25px;
+                                margin-bottom: 12px;
+                            }
+                            
+                            li {
+                                margin-bottom: 6px;
+                            }
+                            
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                                page-break-inside: avoid;
+                                margin: 15px 0;
+                            }
+                            
+                            .classified {
+                                background: #c00;
+                                color: #fff;
+                                padding: 5px 15px;
+                                display: inline-block;
+                                font-weight: bold;
+                                margin: 10px 0;
+                            }
+                            
+                            .info-box {
+                                border: 2px solid #333;
+                                padding: 15px;
+                                margin: 15px 0;
+                                background: #f9f9f9;
+                                page-break-inside: avoid;
+                            }
+                            
+                            .evidence-item {
+                                margin: 20px 0;
+                                padding: 15px;
+                                border-left: 4px solid #c00;
+                                background: #fafafa;
+                                page-break-inside: avoid;
+                            }
+                            
+                            strong {
+                                font-weight: bold;
+                                color: #000;
+                            }
+                            
+                            em {
+                                font-style: italic;
+                            }
+                            
+                            /* Hide navigation and interactive elements */
+                            nav, button, .btn, a[href*="hint"], a[href*="solution"], .no-print {
+                                display: none !important;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>BIOGENEX INCIDENT - CASE FILE</h1>
+                        <div class="classified">CLASSIFIED - AUTHORIZED ACCESS ONLY</div>
+                        <p><strong>Case Number:</strong> VX-2024-1127</p>
+                        <p><strong>Date Generated:</strong> ${new Date().toLocaleDateString()}</p>
+                        <div class="page-break"></div>
+                    </body>
+                    </html>
+                `);
 
-        function openAllPagesForPrint() {
-            CASE_PAGES.forEach((page, index) => {
+                // Load each page content
+                let loadedPages = 0;
+                for (const page of CASE_PAGES) {
+                    try {
+                        const response = await fetch(page);
+                        const html = await response.text();
+                        
+                        // Parse HTML
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        
+                        // Get the body content
+                        const bodyContent = doc.querySelector('body');
+                        if (bodyContent) {
+                            // Remove unwanted elements
+                            const elementsToRemove = bodyContent.querySelectorAll(
+                                'nav, button, .btn, script, style, .no-print, a[href*="hint"], a[href*="solution"], header, footer'
+                            );
+                            elementsToRemove.forEach(el => el.remove());
+                            
+                            // Add page break before each new section
+                            if (loadedPages > 0) {
+                                printWindow.document.body.innerHTML += '<div class="page-break"></div>';
+                            }
+                            
+                            // Add the content
+                            printWindow.document.body.innerHTML += bodyContent.innerHTML;
+                            loadedPages++;
+                        }
+                    } catch (error) {
+                        console.error(`Error loading ${page}:`, error);
+                    }
+                }
+
+                // Hide loading overlay
+                document.getElementById('loadingOverlay').classList.remove('active');
+
+                // Wait a moment for content to render, then trigger print
                 setTimeout(() => {
-                    window.open(page, '_blank');
-                }, index * 300);
-            });
-            
-            closePrintModal();
-            
-            setTimeout(() => {
-                alert('✅ All case pages opened!\n\nUse Ctrl+P (or Cmd+P on Mac) on each tab and select "Save as PDF" to create your printable case file.');
-            }, CASE_PAGES.length * 300 + 500);
-        }
+                    printWindow.print();
+                }, 500);
 
-        document.getElementById('printModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePrintModal();
+            } catch (error) {
+                console.error('Error preparing print:', error);
+                document.getElementById('loadingOverlay').classList.remove('active');
+                alert('Error preparing case file for printing. Please try again.');
             }
-        });
+        }
     </script>
 </body>
 </html>
