@@ -256,40 +256,35 @@
         }
         
         .divider {
+            display: flex;
+            align-items: center;
             text-align: center;
-            margin: 35px 0;
-            position: relative;
-        }
-        
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
-        }
-        
-        .divider span {
-            background: white;
-            padding: 0 20px;
+            margin: 30px 0;
             color: #94a3b8;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
-            z-index: 1;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .divider span {
+            padding: 0 15px;
         }
         
         .info-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
             border-left: 4px solid #3b82f6;
-            padding: 20px;
+            padding: 18px;
             border-radius: 8px;
             font-size: 13px;
-            color: #1e40af;
+            color: #1e3a8a;
             line-height: 1.6;
         }
         
@@ -297,26 +292,34 @@
             display: block;
             margin-bottom: 10px;
             font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
         .info-box ul {
-            margin-left: 20px;
-            margin-top: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         .info-box li {
-            margin-bottom: 6px;
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .info-box li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
         }
         
         .request-access-box {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
+            border: 2px solid #d97706;
             border-radius: 12px;
-            padding: 30px 25px;
+            padding: 25px;
             text-align: center;
-            margin-top: 25px;
             position: relative;
             overflow: hidden;
         }
@@ -332,68 +335,51 @@
                 45deg,
                 transparent,
                 transparent 10px,
-                rgba(245, 158, 11, 0.05) 10px,
-                rgba(245, 158, 11, 0.05) 20px
+                rgba(217, 119, 6, 0.05) 10px,
+                rgba(217, 119, 6, 0.05) 20px
             );
             animation: shine 20s linear infinite;
             pointer-events: none;
         }
         
         @keyframes shine {
-            0% { transform: translate(0, 0) rotate(45deg); }
-            100% { transform: translate(50%, 50%) rotate(45deg); }
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
         
         .request-icon {
             font-size: 36px;
             margin-bottom: 12px;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            position: relative;
+            z-index: 1;
         }
         
         .request-access-box h3 {
-            font-size: 18px;
-            color: #92400e;
-            margin-bottom: 10px;
-            font-weight: 800;
+            font-size: 16px;
+            color: #78350f;
+            margin-bottom: 12px;
+            font-weight: 700;
             position: relative;
             z-index: 1;
         }
         
         .request-access-box p {
-            font-size: 14px;
-            color: #78350f;
-            margin-bottom: 20px;
+            font-size: 13px;
+            color: #92400e;
             line-height: 1.6;
             position: relative;
             z-index: 1;
         }
         
-        .request-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 700;
+        .request-access-box a {
+            color: #92400e;
             text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-            position: relative;
-            z-index: 1;
+            font-weight: 700;
         }
         
-        .request-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.5);
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-        }
-        
-        .btn-icon {
+        .request-access-box a:hover {
+            text-decoration: underline;
             font-size: 18px;
         }
         
@@ -420,6 +406,13 @@
             color: #94a3b8;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        
+        .disclaimer {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 8px;
+            font-style: italic;
         }
         
         /* Training Case Section */
@@ -618,17 +611,16 @@
         <div class="request-access-box">
             <div class="request-icon">🔓</div>
             <h3>Need Access to Additional Cases?</h3>
-            <p>If you require elevated clearance to classified investigations, send an email to <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33521d52515756565d735f5a45561d505c5e">[email&#160;protected]</a></strong> and include in the subject line: <strong>"Request CID Case Access"</strong></p>
+            <p>If you require elevated clearance to classified investigations, send an email to <strong><a href="mailto:cigame@abdeen.uk">cigame@abdeen.uk</a></strong> and include in the subject line: <strong>"Request CID Case Access"</strong></p>
             <div class="request-note">Response time: 24-48 hours · Security verification required</div>
         </div>
         
         <div class="footer">
             <p>CID System v3.2.1 :: Secure Access Portal</p>
+            <p class="disclaimer">All events, characters, and images are fictional and created with AI assistance</p>
         </div>
     </div>
     
-    
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="auth.js"></script>
     <script>
         function accessCase() {
@@ -651,3 +643,13 @@
             if (e.key === 'Enter') {
                 accessCase();
             }
+        });
+        
+        document.getElementById('caseNumber').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                accessCase();
+            }
+        });
+    </script>
+</body>
+</html>
