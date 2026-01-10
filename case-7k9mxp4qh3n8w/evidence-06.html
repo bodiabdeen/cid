@@ -16,15 +16,12 @@
         .evidence-number { font-family: 'Share Tech Mono', monospace; color: #ffd700; font-size: 14px; letter-spacing: 2px; }
         .info-box { background: rgba(255, 215, 0, 0.1); border-left: 4px solid #ffd700; padding: 15px 20px; margin: 20px 0; font-family: 'Share Tech Mono', monospace; font-size: 13px; }
         .statement { margin: 30px 0; background: linear-gradient(135deg, rgba(0, 247, 255, 0.05) 0%, rgba(5, 8, 20, 0.9) 100%); border: 1px solid #00f7ff; padding: 25px; }
-        .statement.flagged { border: 2px solid #ff006e; background: rgba(255, 0, 110, 0.08); }
         .statement-header { border-bottom: 2px solid rgba(0, 247, 255, 0.3); padding-bottom: 15px; margin-bottom: 20px; }
         .witness-name { font-family: 'Orbitron', sans-serif; color: #ff006e; font-size: 20px; margin-bottom: 10px; }
         .witness-info { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: #00f7ff; margin: 5px 0; }
         .statement-body { line-height: 1.8; font-size: 15px; padding: 20px; background: rgba(0, 0, 0, 0.3); }
         .interrogator { color: #ffd700; font-weight: bold; margin: 15px 0 5px 0; }
         .response { color: #00f7ff; margin-left: 20px; margin-bottom: 15px; }
-        .note { background: rgba(255, 0, 110, 0.1); border-left: 3px solid #ff006e; padding: 15px; margin: 20px 0; font-size: 14px; }
-        .note-title { color: #ff006e; font-weight: bold; margin-bottom: 8px; }
         .back-link { display: inline-block; margin-top: 30px; padding: 12px 24px; background: rgba(0, 247, 255, 0.2); border: 1px solid #00f7ff; color: #00f7ff; text-decoration: none; font-family: 'Share Tech Mono', monospace; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
         .back-link:hover { background: #00f7ff; color: #050814; box-shadow: 0 0 20px rgba(0, 247, 255, 0.6); }
     </style>
@@ -55,13 +52,9 @@
                 <div class="interrogator">DETECTIVE: You saw Armstrong?</div>
                 <div class="response">Yes. Delivered paperwork to SOC around 22:00. He was monitoring screens. Saw him again at 23:15, still there, on phone.</div>
             </div>
-            <div class="note">
-                <div class="note-title">ANALYST NOTE:</div>
-                Watanabe provides alibi confirmation for Armstrong at 22:00 and 23:15. However, there's a 75-minute gap with no visual confirmation.
-            </div>
         </div>
 
-        <div class="statement flagged">
+        <div class="statement">
             <div class="statement-header">
                 <div class="witness-name">WITNESS #2: DR. LISA CHEN</div>
                 <div class="witness-info">Lab Technician, Floor 43 Medical | Interview: Nov 24, 16:20 JST</div>
@@ -74,13 +67,9 @@
                 <div class="interrogator">DETECTIVE: Could you hear what they discussed?</div>
                 <div class="response">The door was closed, but voices were raised. I heard Dr. Volkov say something like "you owe me this" and Dr. Foster replied "I know what's at stake." Then silence.</div>
             </div>
-            <div class="note">
-                <div class="note-title">⚠️ CRITICAL EVIDENCE:</div>
-                This places Volkov WITH Foster during Yamamoto's toxin preparation on Nov 21. Their conversation suggests collaboration and shared stakes in the outcome.
-            </div>
         </div>
 
-        <div class="statement flagged">
+        <div class="statement">
             <div class="statement-header">
                 <div class="witness-name">WITNESS #3: HIROSHI NAKAMURA</div>
                 <div class="witness-info">Delivery Driver, Medical Supplies | Interview: Nov 25, 09:40 JST</div>
@@ -95,10 +84,6 @@
                 <div class="interrogator">DETECTIVE: What time did you leave?</div>
                 <div class="response">About 09:00. As I was leaving, I saw that same young woman at the medical refrigeration unit. She was placing a small package inside.</div>
             </div>
-            <div class="note">
-                <div class="note-title">TIMELINE MATCH:</div>
-                This corroborates the burner phone text: "package will be delivered to medical refrigeration unit on Nov 22 at 09:00." Tanaka was seen handling a package at exactly that time/location.
-            </div>
         </div>
 
         <div class="statement">
@@ -112,14 +97,6 @@
                 <div class="interrogator">DETECTIVE: Did he mention feeling threatened?</div>
                 <div class="response">On November 20th, he told me he'd made a backup of all his evidence and hidden it somewhere safe. He said "if anything happens to me, someone will find the truth." He was scared, detective. Someone killed my husband to keep him quiet.</div>
             </div>
-        </div>
-
-        <div style="background: rgba(255, 0, 110, 0.15); padding: 25px; margin: 30px 0; border: 2px solid #ff006e;">
-            <strong style="color: #ff006e; font-size: 18px;">WITNESS TESTIMONY SUMMARY:</strong><br><br>
-            1. Armstrong's alibi has gaps (75-minute window unaccounted)<br>
-            2. Volkov was WITH Foster during toxin preparation on Nov 21<br>
-            3. Tanaka was seen handling "package" at medical unit on Nov 22 at 09:00 (exact time from burner phone instructions)<br>
-            4. Yamamoto feared for his life and created evidence backup
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
