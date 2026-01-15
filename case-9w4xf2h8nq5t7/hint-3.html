@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تلميح 3 - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #ff0078;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(255, 0, 120, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 0, 120, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #ff0078;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff0078;
+        }
+
+        .hint-number {
+            color: #ff0078;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #ff0078;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 120, 0.5);
+        }
+
+        .warning-box {
+            background: rgba(255, 0, 120, 0.1);
+            border: 2px solid #ff0078;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .warning-box p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hint-content {
+            background: rgba(255, 0, 120, 0.05);
+            border-right: 4px solid #ff0078;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .hint-content h3 {
+            color: #ff0078;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hint-content p {
+            margin-bottom: 18px;
+            font-size: 18px;
+            line-height: 2.2;
+        }
+
+        .timeline {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .timeline h4 {
+            color: #00d4ff;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .time-entry {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-right: 4px solid #00d4ff;
+        }
+
+        .time-entry .time {
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .critical-evidence {
+            background: rgba(255, 200, 0, 0.15);
+            border: 3px solid #ffc800;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .critical-evidence h4 {
+            color: #ffc800;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .evidence-point {
+            background: rgba(255, 200, 0, 0.1);
+            border-right: 4px solid #ffc800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .evidence-point strong {
+            color: #ffc800;
+            font-size: 18px;
+        }
+
+        .final-question {
+            background: linear-gradient(135deg, rgba(255, 0, 120, 0.2) 0%, rgba(255, 0, 60, 0.2) 100%);
+            border: 2px solid #ff0078;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .final-question h3 {
+            color: #ff0078;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .final-question p {
+            font-size: 19px;
+            line-height: 2.2;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0078 0%, #ff0050 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 120, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 120, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="hint-number">💡 التلميح الثالث</div>
+            <h1>تلميح قوي</h1>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>⚠️ تحذير نهائي</strong></p>
+            <p>هذا التلميح قوي جداً ويكاد يكشف الحل</p>
+            <p>اقرأه فقط إذا كنت عالقاً تماماً</p>
+        </div>
+
+        <div class="timeline">
+            <h4>⏰ الجدول الزمني الدقيق - ليلة الجريمة</h4>
+            
+            <div class="time-entry">
+                <div class="time">7:30 مساءً</div>
+                <p>داليا منصور تدخل المبنى</p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">6:45 مساءً</div>
+                <p>يوسف طه يدخل المبنى</p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">8:15 مساءً</div>
+                <p>شريف نجيب يدخل المبنى</p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">10:28 مساءً</div>
+                <p>يوسف طه يغادر المبنى - <strong style="color: #ff003c;">مستبعد من القضية</strong></p>
+            </div>
+
+            <div class="time-entry" style="border-right-color: #ffc800; background: rgba(255, 200, 0, 0.1);">
+                <div class="time">11:00 - 11:40 مساءً</div>
+                <p><strong style="color: #ffc800;">الفترة الحرجة: شريف يصنع ويشرب القهوة المسمومة</strong></p>
+                <p>آخر نشاط على MacBook: 11:38 مساءً</p>
+                <p>آخر نشاط على Lenovo: 11:15 مساءً</p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">11:50 مساءً</div>
+                <p>كريم فاروق يدخل المبنى - <strong style="color: #ff0078;">بعد تسميم القهوة!</strong></p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">12:47 صباحاً</div>
+                <p>كريم فاروق يغادر المبنى</p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">1:33 صباحاً</div>
+                <p>داليا منصور تغادر المبنى</p>
+            </div>
+
+            <div class="time-entry">
+                <div class="time">8:30 صباحاً</div>
+                <p>منى سيد تكتشف الجثة</p>
+            </div>
+        </div>
+
+        <div class="critical-evidence">
+            <h4>🔬 الأدلة الحاسمة</h4>
+
+            <div class="evidence-point">
+                <strong>1. الوقت يستبعد كريم فاروق</strong>
+                <p>كريم دخل المبنى الساعة 11:50 مساءً. لكن شريف توقف عن العمل على حاسوبه الساعة 11:38 مساءً - أي قبل وصول كريم بـ 12 دقيقة.</p>
+                <p>القهوة تم تناولها على الأرجح بين 11:00 - 11:40 مساءً عندما كان شريف يعمل.</p>
+                <p>كريم وصل متأخراً جداً ليضع السم في القهوة.</p>
+            </div>
+
+            <div class="evidence-point">
+                <strong>2. مصدر السم الوحيد</strong>
+                <p>داليا منصور هي الشخص الوحيد بين جميع المشتبه بهم الذي لديه وصفة طبية للديجوكسين.</p>
+                <p>اشترت 90 قرصاً (0.25 مجم لكل قرص) في 5 سبتمبر 2024.</p>
+                <p>لقتل شريف، كان يلزم حوالي 12-20 قرص (3-5 مجم).</p>
+                <p>لا يوجد أي شخص آخر له وصول شرعي لهذا الدواء المراقب.</p>
+            </div>
+
+            <div class="evidence-point">
+                <strong>3. المعرفة بالعادات</strong>
+                <p>داليا تعرف شريف منذ 5 سنوات. تعرف عاداته اليومية تماماً.</p>
+                <p>تعلم أنه يصنع قهوته بنفسه في مكتبه الخاص.</p>
+                <p>تعلم أنه يعمل متأخراً ليلاً عندما يكون المبنى فارغاً.</p>
+                <p>كان لديها وصول كامل لمكتبه - بدون الحاجة لبطاقة خاصة.</p>
+            </div>
+
+            <div class="evidence-point">
+                <strong>4. الدافع القوي</strong>
+                <p>البريد الإلكتروني بتاريخ 2 أكتوبر يُظهر صراعاً مريراً حول ملكية الخوارزمية.</p>
+                <p>"لقد عملت على هذه الخوارزمية لمدة 18 شهراً... لن أبقى في وضع لا يُقدّر فيه عملي."</p>
+                <p>شريف رفض تعديل اتفاقية الشراكة وهددها ببند عدم المنافسة.</p>
+                <p>شعرت أن سنوات عملها تُسرق منها.</p>
+            </div>
+
+            <div class="evidence-point">
+                <strong>5. الفرصة المثالية</strong>
+                <p>كانت الوحيدة في المبنى مع شريف خلال الفترة الحرجة (بعد مغادرة يوسف وقبل وصول كريم).</p>
+                <p>كانت تعمل في قسم التطوير - بعيدة بما يكفي لتجنب الشك.</p>
+                <p>يمكنها زيارة مكتب شريف تحت أي ذريعة مهنية.</p>
+            </div>
+        </div>
+
+        <div class="hint-content">
+            <h3>💊 كيف تم التسميم؟</h3>
+            <p>الديجوكسين قابل للذوبان في السوائل الساخنة.</p>
+            <p>شريف يصنع قهوته بنفسه، لكن هناك عدة لحظات يمكن فيها إضافة السم:</p>
+            <p>- في علبة السكر المخزنة في درج مكتبه</p>
+            <p>- في علبة القهوة نفسها</p>
+            <p>- في الحليب في ثلاجته الخاصة</p>
+            <p>- مباشرة في الفنجان عندما يكون شريف بعيداً عن مكتبه لدقائق</p>
+            <p>القاتل يعرف عادات شريف ويعرف أنه سيشرب القهوة حتماً أثناء العمل الليلي.</p>
+        </div>
+
+        <div class="final-question">
+            <h3>❓ السؤال النهائي</h3>
+            <p>من هو الشخص الوحيد الذي يجمع بين:</p>
+            <p>✓ الوصول الشرعي للديجوكسين (وصفة طبية)</p>
+            <p>✓ التواجد في المبنى خلال الفترة الحرجة</p>
+            <p>✓ المعرفة الكاملة بعادات شريف اليومية</p>
+            <p>✓ دافع قوي مرتبط بالصراع على ملكية العمل الفكري</p>
+            <p>✓ الفرصة الكاملة للوصول لمكتب شريف دون إثارة الشبهات</p>
+            <p style="margin-top: 25px; font-size: 22px; color: #ff0078;"><strong>الإجابة واضحة الآن.</strong></p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">🔙 العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

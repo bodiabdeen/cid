@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تلميح 2 - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #ff9500;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(255, 149, 0, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 149, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #ff9500;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff9500;
+        }
+
+        .hint-number {
+            color: #ff9500;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #ff9500;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 149, 0, 0.5);
+        }
+
+        .warning-box {
+            background: rgba(255, 149, 0, 0.1);
+            border: 2px solid #ff9500;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .warning-box p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hint-content {
+            background: rgba(255, 149, 0, 0.05);
+            border-right: 4px solid #ff9500;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .hint-content h3 {
+            color: #ff9500;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hint-content p {
+            margin-bottom: 18px;
+            font-size: 18px;
+            line-height: 2.2;
+        }
+
+        .elimination {
+            background: rgba(255, 0, 60, 0.1);
+            border: 2px solid #ff003c;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .elimination h4 {
+            color: #ff003c;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .elimination p {
+            margin-bottom: 12px;
+            line-height: 2;
+        }
+
+        .suspect-box {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .suspect-box h4 {
+            color: #00d4ff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .suspect-box p {
+            margin-bottom: 12px;
+            line-height: 2;
+        }
+
+        .key-point {
+            background: rgba(255, 200, 0, 0.15);
+            border-right: 4px solid #ffc800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .key-point strong {
+            color: #ffc800;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9500 0%, #ff6600 100%);
+            color: #0a0a0a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 149, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="hint-number">💡 التلميح الثاني</div>
+            <h1>تلميح متوسط</h1>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>⚠️ تحذير</strong></p>
+            <p>هذا التلميح أقوى من السابق وسيستبعد عدة مشتبه بهم</p>
+            <p>تأكد من مراجعة جميع الأدلة بنفسك أولاً</p>
+        </div>
+
+        <div class="hint-content">
+            <h3>🔍 تحليل المشتبه بهم</h3>
+            <p>لنحلل كل مشتبه به بناءً على ثلاثة معايير أساسية:</p>
+            <p><strong>1. الفرصة:</strong> هل كان في المكان المناسب في الوقت المناسب؟</p>
+            <p><strong>2. الوسيلة:</strong> هل كان لديه وصول للديجوكسين؟</p>
+            <p><strong>3. الدافع:</strong> هل كان لديه سبب قوي لقتل شريف؟</p>
+        </div>
+
+        <div class="elimination">
+            <h4>❌ المشتبه بهم المستبعدون</h4>
+
+            <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.2); border-radius: 8px;">
+                <p><strong style="color: #ff003c;">يوسف طه - مستبعد</strong></p>
+                <p>السجلات تُظهر أنه غادر المبنى الساعة 10:28 مساءً.</p>
+                <p>شريف كان لا يزال حياً ويعمل حتى الساعة 11:38 مساءً على الأقل (آخر نشاط على MacBook).</p>
+                <p>القهوة تم تناولها بعد الساعة 11:00 مساءً - بعد أن غادر يوسف بوقت طويل.</p>
+                <p>لا يوجد لديه وصول شرعي للديجوكسين.</p>
+            </div>
+
+            <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.2); border-radius: 8px;">
+                <p><strong style="color: #ff003c;">منى سيد - مستبعدة</strong></p>
+                <p>لم تكن في المبنى ليلة الجريمة على الإطلاق.</p>
+                <p>غادرت العمل الساعة 5:00 مساءً ولم تعد.</p>
+                <p>سجلات الدخول لا تُظهر أي دخول لها بعد ذلك.</p>
+                <p>زوجها يؤكد وجودها في المنزل طوال الليل.</p>
+                <p>لا يوجد لديها وصول للديجوكسين.</p>
+            </div>
+
+            <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.2); border-radius: 8px;">
+                <p><strong style="color: #ff003c;">رانيا حسن - مستبعدة</strong></p>
+                <p>كانت في حفل خيري في فندق كمبينسكي مع أكثر من 200 شخص.</p>
+                <p>هناك صور وشهود وسجلات الفندق تثبت وجودها هناك.</p>
+                <p>لا يوجد لديها وصول للمبنى (ليست موظفة في فيريترا).</p>
+                <p>لا يوجد لديها وصول للديجوكسين.</p>
+                <p>على الرغم من تهديداتها، لا توجد أدلة مادية تربطها بالجريمة.</p>
+            </div>
+        </div>
+
+        <div class="suspect-box">
+            <h4>⚠️ المشتبهان الرئيسيان</h4>
+            
+            <div style="margin: 25px 0;">
+                <p><strong style="color: #00d4ff; font-size: 20px;">المشتبه رقم 1: داليا منصور</strong></p>
+                
+                <div class="key-point">
+                    <strong>الفرصة:</strong> كانت في المبنى من الساعة 7:30 مساءً حتى 1:33 صباحاً. كانت موجودة خلال الوقت الحرج تماماً.
+                </div>
+
+                <div class="key-point">
+                    <strong>الوسيلة:</strong> لديها وصفة طبية نشطة للديجوكسين! اشترت 90 قرصاً في 5 سبتمبر 2024. هذا هو المصدر الوحيد المؤكد للسم بين جميع المشتبه بهم.
+                </div>
+
+                <div class="key-point">
+                    <strong>الدافع:</strong> توتر شديد مع شريف حول ملكية الخوارزمية. رسائل البريد الإلكتروني تُظهر صراعاً على الاعتراف والملكية الفكرية. شعرت بأن عملها لا يُقدر.
+                </div>
+
+                <div class="key-point">
+                    <strong>الوصول:</strong> تعرف عادات شريف جيداً. تعلم أنه يصنع قهوته بنفسه في مكتبه الخاص. يمكنها الوصول لمكتبه بسهولة.
+                </div>
+            </div>
+
+            <div style="margin: 25px 0;">
+                <p><strong style="color: #00d4ff; font-size: 20px;">المشتبه رقم 2: كريم فاروق</strong></p>
+                
+                <div class="key-point">
+                    <strong>الفرصة:</strong> دخل المبنى الساعة 11:50 مساءً - بعد أن تناول شريف القهوة المسمومة على الأرجح. غادر الساعة 12:47 صباحاً.
+                </div>
+
+                <div class="key-point">
+                    <strong>الوسيلة:</strong> لا يوجد لديه وصفة طبية للديجوكسين. سجلاته الطبية لا تُظهر أي وصول شرعي للدواء.
+                </div>
+
+                <div class="key-point">
+                    <strong>الدافع:</strong> ضغط مالي كبير من صندوق الاستثمار. كان يهدد بإجبار شريف على بيع الشركة. لكن قتل شريف لا يحل مشكلته المالية - بل يعقدها.
+                </div>
+
+                <div class="key-point">
+                    <strong>ملاحظة مهمة:</strong> دخل غرفة الخوادم لمدة 5 دقائق فقط. ماذا كان يفعل هناك؟
+                </div>
+            </div>
+        </div>
+
+        <div class="hint-content">
+            <h3>🎯 الأسئلة الحاسمة</h3>
+            <p>الآن يجب أن تركز على المشتبهين الرئيسيين:</p>
+            <p><strong>1.</strong> من لديه الوسيلة الحقيقية للحصول على الديجوكسين بشكل شرعي؟</p>
+            <p><strong>2.</strong> من كان في المبنى قبل الساعة 11:40 مساءً عندما كان شريف لا يزال يعمل؟</p>
+            <p><strong>3.</strong> من يعرف عادات شريف اليومية بما يكفي لوضع السم في قهوته؟</p>
+            <p><strong>4.</strong> راجع توقيت دخول كريم (11:50 مساءً) - هل هذا يتناسب مع توقيت تسميم القهوة؟</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">🔙 العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

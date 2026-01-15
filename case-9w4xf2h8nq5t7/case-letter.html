@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطاب الوصول - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .letter-container {
+                border: 2px solid #000 !important;
+                box-shadow: none !important;
+                background: white !important;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(15, 12, 41, 0.95);
+            border: 3px solid #00d4ff;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #00d4ff;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 36px;
+            color: #00d4ff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-top: 10px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .welcome h2 {
+            color: #00d4ff;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .welcome p {
+            font-size: 18px;
+            line-height: 2;
+            margin-bottom: 10px;
+        }
+
+        .case-title {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .case-title h3 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .case-title p {
+            font-size: 18px;
+            color: #b0b0b0;
+        }
+
+        .credentials {
+            background: rgba(255, 200, 0, 0.1);
+            border: 2px solid #ffc800;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .credentials h4 {
+            color: #ffc800;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cred-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #ffc800;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .cred-label {
+            color: #ffc800;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .cred-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 32px;
+            color: #00d4ff;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .qr-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .qr-section h4 {
+            color: #00d4ff;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .qr-code {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 3px solid #00d4ff;
+        }
+
+        .instructions {
+            background: rgba(0, 212, 255, 0.05);
+            border-right: 4px solid #00d4ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .instructions h4 {
+            color: #00d4ff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            margin-right: 25px;
+        }
+
+        .instructions li {
+            margin-bottom: 15px;
+            line-height: 2;
+            font-size: 17px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #00d4ff;
+            color: #b0b0b0;
+            font-size: 15px;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0a0a;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        @media print {
+            .letter-container {
+                padding: 30px;
+            }
+            .logo {
+                color: #000;
+                text-shadow: none;
+            }
+            .case-title h3, .credentials h4, .qr-section h4, .instructions h4 {
+                color: #000;
+            }
+            .cred-value {
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <div class="header">
+            <div class="logo">CID</div>
+            <div class="subtitle">Criminal Investigation Database</div>
+            <div class="subtitle">قاعدة بيانات التحقيقات الجنائية</div>
+        </div>
+
+        <div class="welcome">
+            <h2>مرحباً بك في عالم التحقيق</h2>
+            <p>لقد حصلت على حق الوصول لقضية تحقيق حصرية</p>
+            <p>استعد لاختبار مهاراتك في التحليل والاستنتاج</p>
+        </div>
+
+        <div class="case-title">
+            <h3>جريمة في وادي السيليكون</h3>
+            <p>مقتل رائد أعمال تقني في قلب القاهرة الجديدة</p>
+            <p style="margin-top: 15px; color: #00d4ff;">الصعوبة: متوسطة - عالية | النوع: تجسس تقني وخيانة</p>
+        </div>
+
+        <div class="credentials">
+            <h4>🔐 بيانات الدخول الخاصة بك</h4>
+            
+            <div class="cred-box">
+                <div class="cred-label">رقم القضية</div>
+                <div class="cred-value">CI-7394</div>
+            </div>
+
+            <div class="cred-box">
+                <div class="cred-label">رمز التفويض</div>
+                <div class="cred-value">D8VM-3KJ2</div>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <h4>📱 امسح للدخول المباشر</h4>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bodiabdeen.github.io/cid" alt="QR Code" width="200" height="200">
+            </div>
+            <p style="margin-top: 15px; color: #b0b0b0;">امسح الرمز أو ادخل على الرابط التالي:</p>
+            <p style="color: #00d4ff; font-size: 18px; margin-top: 10px;">https://bodiabdeen.github.io/cid</p>
+        </div>
+
+        <div class="instructions">
+            <h4>📋 تعليمات الاستخدام</h4>
+            <ol>
+                <li>افتح الموقع: <strong>https://bodiabdeen.github.io/cid</strong> أو امسح رمز QR</li>
+                <li>أدخل رقم القضية: <strong>CI-7394</strong></li>
+                <li>أدخل رمز التفويض: <strong>D8VM-3KJ2</strong></li>
+                <li>اضغط على "دخول" للوصول إلى ملفات القضية</li>
+                <li>افحص جميع الأدلة بعناية</li>
+                <li>استجوب المشتبه بهم</li>
+                <li>استخدم التلميحات فقط إذا كنت عالقاً</li>
+                <li>حاول حل القضية قبل مراجعة الحل النهائي</li>
+            </ol>
+        </div>
+
+        <div style="background: rgba(255, 0, 120, 0.1); border: 2px solid #ff0078; border-radius: 10px; padding: 20px; margin: 30px 0; text-align: center;">
+            <h4 style="color: #ff0078; font-size: 20px; margin-bottom: 15px;">⚠️ تحذير</h4>
+            <p style="line-height: 2;">هذه القضية تحتوي على تفاصيل جريمة قتل. لا تشارك بيانات الدخول مع الآخرين. كل عملية شراء مخصصة لمستخدم واحد فقط.</p>
+        </div>
+
+        <div class="footer">
+            <p>شكراً لشرائك قضية من CID</p>
+            <p style="margin-top: 10px;">نتمنى لك تجربة تحقيق ممتعة ومليئة بالتحدي</p>
+            <p style="margin-top: 20px; font-size: 13px;">© 2024 Criminal Investigation Database. All rights reserved.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;" class="no-print">
+            <button class="print-btn" onclick="window.print()">🖨️ طباعة خطاب الوصول</button>
+        </div>
+    </div>
+</body>
+</html>

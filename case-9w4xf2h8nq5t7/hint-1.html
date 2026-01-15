@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تلميح 1 - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #ffc800;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(255, 200, 0, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 200, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #ffc800;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ffc800;
+        }
+
+        .hint-number {
+            color: #ffc800;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #ffc800;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 200, 0, 0.5);
+        }
+
+        .warning-box {
+            background: rgba(255, 200, 0, 0.1);
+            border: 2px solid #ffc800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .warning-box p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hint-content {
+            background: rgba(255, 200, 0, 0.05);
+            border-right: 4px solid #ffc800;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .hint-content h3 {
+            color: #ffc800;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hint-content p {
+            margin-bottom: 18px;
+            font-size: 18px;
+            line-height: 2.2;
+        }
+
+        .question {
+            background: rgba(255, 200, 0, 0.1);
+            border: 1px solid #ffc800;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .question h4 {
+            color: #ffc800;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .question ul {
+            margin-right: 25px;
+        }
+
+        .question li {
+            margin-bottom: 12px;
+            line-height: 2;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffc800 0%, #ff9500 100%);
+            color: #0a0a0a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 200, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="hint-number">💡 التلميح الأول</div>
+            <h1>تلميح خفيف</h1>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>⚠️ تحذير</strong></p>
+            <p>هذا التلميح يحتوي على توجيهات قد تساعدك في حل القضية</p>
+            <p>حاول حل القضية بنفسك أولاً قبل قراءة التلميحات</p>
+        </div>
+
+        <div class="hint-content">
+            <h3>🕐 ركز على الوقت</h3>
+            <p>وفقاً لتقرير الطب الشرعي، الوفاة حدثت بين الساعة 11:00 مساءً والساعة 2:00 صباحاً.</p>
+            <p>تقرير مسرح الجريمة يشير إلى أن الضحية تناول القهوة المسمومة بين الساعة 11:00 مساءً و 11:45 مساءً تقريباً.</p>
+            <p>الديجوكسين يسبب الوفاة خلال 1-3 ساعات من تناول جرعة قاتلة.</p>
+        </div>
+
+        <div class="hint-content">
+            <h3>🔐 من كان في المبنى؟</h3>
+            <p>راجع سجلات الدخول الأمني بعناية. من كان داخل المبنى خلال الفترة الحرجة؟</p>
+            <p>تذكر: مكتب شريف لا يتطلب بطاقة دخول منفصلة - يمكن لأي شخص داخل المبنى الوصول إليه.</p>
+            <p>ركز على من كان موجوداً بعد الساعة 10:30 مساءً.</p>
+        </div>
+
+        <div class="hint-content">
+            <h3>💊 المصدر الوحيد للسم</h3>
+            <p>السجلات الطبية تُظهر معلومات مهمة جداً.</p>
+            <p>الديجوكسين ليس دواءً شائعاً - إنه دواء قلبي مراقب يحتاج لوصفة طبية.</p>
+            <p>كم شخصاً من المشتبه بهم لديه وصول شرعي لهذا الدواء؟</p>
+        </div>
+
+        <div class="question">
+            <h4>أسئلة للتفكير:</h4>
+            <ul>
+                <li>من كان لديه الفرصة لوضع السم في قهوة شريف خلال الوقت المحدد؟</li>
+                <li>من كان لديه وصول سهل للديجوكسين؟</li>
+                <li>راجع الحواسيب المحمولة - متى كان آخر نشاط لشريف؟ ماذا يخبرك ذلك عن وقت تناوله للقهوة؟</li>
+                <li>تذكر: القاتل يجب أن يكون لديه كل من: الفرصة (التواجد) + الوسيلة (الوصول للسم) + الدافع</li>
+            </ul>
+        </div>
+
+        <div class="hint-content">
+            <h3>🎯 ضيّق نطاق البحث</h3>
+            <p>بعد مراجعة جميع الأدلة، يمكنك استبعاد بعض المشتبه بهم:</p>
+            <p>- من لم يكن في المبنى خلال الوقت الحرج</p>
+            <p>- من ليس لديه وصول للديجوكسين</p>
+            <p>يجب أن يتبقى لديك 2-3 مشتبه بهم رئيسيين بعد هذا التحليل.</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">🔙 العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

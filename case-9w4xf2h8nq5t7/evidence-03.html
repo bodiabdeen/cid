@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل 3: رسائل البريد الإلكتروني - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #00d4ff;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .evidence-number {
+            color: #00d4ff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .intro {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .email-thread {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .email {
+            background: rgba(0, 212, 255, 0.05);
+            border-right: 4px solid #00d4ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .email:last-child {
+            margin-bottom: 0;
+        }
+
+        .email-header {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .email-header p {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .email-header strong {
+            color: #00d4ff;
+        }
+
+        .email-body {
+            padding: 15px 10px;
+            line-height: 2;
+        }
+
+        .timestamp {
+            font-family: 'Roboto Mono', monospace;
+            color: #00ff88;
+            font-size: 14px;
+        }
+
+        .sender {
+            color: #ffc800;
+            font-weight: 600;
+        }
+
+        .subject {
+            color: #ff0078;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .attachment {
+            background: rgba(255, 200, 0, 0.1);
+            border: 1px solid #ffc800;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .attachment-icon {
+            color: #ffc800;
+            margin-left: 8px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0a0a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="evidence-number">الدليل رقم 3</div>
+            <h1>📧 رسائل البريد الإلكتروني</h1>
+        </div>
+
+        <div class="intro">
+            <p><strong>المصدر:</strong> خادم البريد الإلكتروني لشركة فيريترا (@veritra.tech)</p>
+            <p><strong>تم الاستخراج:</strong> 15 أكتوبر 2024 - بأمر من النيابة</p>
+            <p><strong>الفترة:</strong> سبتمبر - أكتوبر 2024</p>
+        </div>
+
+        <div class="email-thread">
+            <h3 style="color: #00d4ff; margin-bottom: 20px;">سلسلة رسائل 1: الضغط من المستثمرين</h3>
+            
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fb909a899296d59d9a89948e90bb9c8e979d8d9e958f8e899e88d59a9e">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e7948f82958e81c9898680928e85a79182958e939586c99382848f">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">عاجل: مراجعة الأداء ربع السنوي</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">28 سبتمبر 2024 - 14:23</span></p>
+                </div>
+                <div class="email-body">
+                    <p>شريف،</p>
+                    <p>الأرقام التي قدمتها في الاجتماع الأخير غير مقبولة على الإطلاق. لقد وعدتنا بإيرادات 2 مليون دولار بحلول الربع الثالث، والنتيجة الفعلية 780 ألف فقط.</p>
+                    <p>الشركات المنافسة تتقدم بسرعة. سايبرجرو وقعت عقداً مع بنك مصر الأسبوع الماضي بقيمة 1.5 مليون دولار. نحن نخسر الفرص.</p>
+                    <p>صندوق الاستثمار يطلب مني تقييم الوضع. هناك خياران فقط:</p>
+                    <p>1- تحقيق الأهداف المتفق عليها خلال الربع الرابع</p>
+                    <p>2- بيع الشركة بينما لا يزال لها قيمة</p>
+                    <p>سأزور المكتب يوم الاثنين لمناقشة هذا الأمر وجهاً لوجه.</p>
+                    <p>كريم</p>
+                </div>
+            </div>
+
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d4e55584f545b13535c5a48545f7d4b584f54494f5c1349585e55">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0bbb1a2b9bdfeb6b1a2bfa5bb90b7a5bcb6a6b5bea4a5a2b5a3feb1b5">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">Re: عاجل: مراجعة الأداء ربع السنوي</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">28 سبتمبر 2024 - 18:47</span></p>
+                </div>
+                <div class="email-body">
+                    <p>كريم،</p>
+                    <p>أنا لن أبيع الشركة. هذا ليس خياراً.</p>
+                    <p>الخوارزمية الجديدة التي نعمل عليها ستغير كل شيء. نحن نتحدث عن تكنولوجيا تتفوق على المنافسين بنسبة 40%. داليا وأنا قريبان جداً من إنهائها.</p>
+                    <p>أعطني حتى 7 نوفمبر. سأقدم عرضاً تقديمياً يثبت قيمة ما بنيناه.</p>
+                    <p>شريف</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="email-thread">
+            <h3 style="color: #00d4ff; margin-bottom: 20px;">سلسلة رسائل 2: التوتر بين المؤسسين</h3>
+            
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caaeaba6a3abe4a7aba4b9a5bfb88abcafb8a3beb8abe4beafa9a2">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74071c11061d125a1a1513011d16340211061d0006155a0011171c">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">نحتاج للحديث عن ملكية الخوارزمية</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">2 أكتوبر 2024 - 22:15</span></p>
+                </div>
+                <div class="email-body">
+                    <p>شريف،</p>
+                    <p>لقد عملت على هذه الخوارزمية لمدة 18 شهراً. الكود الأساسي من تطويري، والتحسينات الأخيرة أيضاً من عملي.</p>
+                    <p>لكن في كل اجتماع مع المستثمرين تتحدث عنها وكأنك أنت من بناها. اسمي لا يُذكر.</p>
+                    <p>أريد تعديل اتفاقية الشراكة لتعكس مساهمتي الحقيقية. 50-50 في الملكية ليست عادلة عندما أكون أنا من يقوم بكل العمل التقني.</p>
+                    <p>لدي عروض من شركات أخرى. لن أبقى في وضع لا يُقدّر فيه عملي.</p>
+                    <p>داليا</p>
+                </div>
+            </div>
+
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="becdd6dbccd7d890d0dfd9cbd7dcfec8dbccd7caccdf90cadbddd6">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2642474a4f47084b474855495354665043544f525447085243454e">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">Re: نحتاج للحديث عن ملكية الخوارزمية</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">3 أكتوبر 2024 - 09:32</span></p>
+                </div>
+                <div class="email-body">
+                    <p>داليا،</p>
+                    <p>أنا من جلب التمويل، أنا من بنى العلاقات مع العملاء، أنا من يدير الشركة. أنتِ تكتبين الكود، وهذا رائع، لكن الشركة أكثر من مجرد كود.</p>
+                    <p>الاتفاقية الحالية عادلة تماماً. إذا كانت لديك عروض أخرى، أنتِ حرة في قبولها، لكن تذكري بند عدم المنافسة في عقدك.</p>
+                    <p>نحن شركاء، وسنبقى شركاء بالشروط الحالية.</p>
+                    <p>شريف</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="email-thread">
+            <h3 style="color: #00d4ff; margin-bottom: 20px;">سلسلة رسائل 3: المنافسة</h3>
+            
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1d3c0cfc8c08fc9c0d2d2c0cfe1c2d8c3c4d3c6d3ced68fc2cecc">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="205348455249460e4e414755494260564552495452410e54454348">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">عرض استحواذ نهائي</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">10 أكتوبر 2024 - 11:18</span></p>
+                </div>
+                <div class="email-body">
+                    <p>شريف،</p>
+                    <p>هذا عرضي الأخير: 8 مليون دولار نقداً لشراء فيريترا بالكامل.</p>
+                    <p>أنا أعلم أنك تحت ضغط من المستثمرين. أعلم أن الشركة تواجه صعوبات مالية. هذا العرض ينقذك ويحقق لك ربحاً جيداً.</p>
+                    <p>إذا رفضت، سأضطر لاتخاذ طرق أخرى للحصول على ما أريد. السوق لا يرحم المتردّدين.</p>
+                    <p>العرض صالح حتى نهاية الشهر.</p>
+                    <p>رانيا حسن</p>
+                    <p>الرئيسة التنفيذية - سايبرجرو</p>
+                </div>
+            </div>
+
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91e2f9f4e3f8f7bffff0f6e4f8f3d1e7f4e3f8e5e3f0bfe5f4f2f9">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0476656a6d652a6c657777656a44677d66617663766b732a676b69">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">Re: عرض استحواذ نهائي</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">10 أكتوبر 2024 - 15:44</span></p>
+                </div>
+                <div class="email-body">
+                    <p>رانيا،</p>
+                    <p>لن أبيع. وتهديداتك لا تخيفني.</p>
+                    <p>إذا اكتشفت أي محاولة لسرقة أسرارنا التقنية، سأقاضيكِ شخصياً وأقاضي شركتك.</p>
+                    <p>شريف</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="email-thread">
+            <h3 style="color: #00d4ff; margin-bottom: 20px;">سلسلة رسائل 4: شكوى الموظف</h3>
+            
+            <div class="email">
+                <div class="email-header">
+                    <p><strong>من:</strong> <span class="sender"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92ebfde7e1e1f7f4bce6f3faf3d2e4f7e0fbe6e0f3bce6f7f1fa">[email&#160;protected]</a></span></p>
+                    <p><strong>إلى:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="563b3938377825372f3332162033243f222437782233353e">[email&#160;protected]</a></p>
+                    <p><strong>الموضوع:</strong> <span class="subject">شكوى رسمية - بيئة عمل سامة</span></p>
+                    <p><strong>التاريخ:</strong> <span class="timestamp">12 أكتوبر 2024 - 20:37</span></p>
+                </div>
+                <div class="email-body">
+                    <p>منى،</p>
+                    <p>أكتب إليك كشكوى رسمية للموارد البشرية.</p>
+                    <p>شريف يطلب مني العمل 70-80 ساعة في الأسبوع بدون أجر إضافي. عندما طلبت زيادة في الراتب، رفض وقال "إذا لم يعجبك العمل، الباب مفتوح".</p>
+                    <p>قدمت استقالتي الشهر الماضي، لكنه رفضها وهددني بمقاضاتي بسبب بند عدم المنافسة. أشعر وكأنن�

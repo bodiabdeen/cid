@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل 2: سجلات الدخول الأمني - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #00d4ff;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .evidence-number {
+            color: #00d4ff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .document {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .doc-header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .doc-header h2 {
+            color: #00d4ff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .doc-header p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .info-box {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-box p {
+            margin-bottom: 8px;
+            line-height: 1.9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+
+        table th {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 14px 10px;
+            text-align: center;
+            border: 1px solid #00d4ff;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 10px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            text-align: center;
+        }
+
+        table tr:nth-child(even) {
+            background: rgba(0, 212, 255, 0.03);
+        }
+
+        .badge-id {
+            font-family: 'Roboto Mono', monospace;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .time {
+            font-family: 'Roboto Mono', monospace;
+            color: #00ff88;
+        }
+
+        .entry {
+            color: #00ff88;
+        }
+
+        .exit {
+            color: #ff8800;
+        }
+
+        .note {
+            background: rgba(255, 200, 0, 0.1);
+            border-right: 4px solid #ffc800;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .note h3 {
+            color: #ffc800;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0a0a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 13px;
+            }
+            
+            table th, table td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="evidence-number">الدليل رقم 2</div>
+            <h1>🔐 سجلات الدخول الأمني</h1>
+        </div>
+
+        <div class="document">
+            <div class="doc-header">
+                <h2>نظام التحكم في الدخول - شركة فيريترا</h2>
+                <p>قرية القاهرة الذكية، القاهرة الجديدة</p>
+                <p>التاريخ: 14-15 أكتوبر 2024</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>نوع النظام:</strong> بطاقات الدخول الإلكترونية (RFID)</p>
+                <p><strong>نقاط التسجيل:</strong> المدخل الرئيسي للشركة، باب غرفة الخوادم</p>
+                <p><strong>الفترة المسجلة:</strong> 14 أكتوبر 2024 (18:00) - 15 أكتوبر 2024 (09:00)</p>
+                <p><strong>تم استخراج السجل بواسطة:</strong> إدارة أمن المبنى</p>
+            </div>
+
+            <h3 style="color: #00d4ff; font-size: 20px; margin: 25px 0 15px 0;">سجل المدخل الرئيسي</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ والوقت</th>
+                        <th>رقم البطاقة</th>
+                        <th>اسم الموظف</th>
+                        <th>الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time">14/10/2024 - 18:45</td>
+                        <td class="badge-id">VRT-2801</td>
+                        <td>يوسف طه</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 19:30</td>
+                        <td class="badge-id">VRT-1002</td>
+                        <td>داليا منصور</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 20:15</td>
+                        <td class="badge-id">VRT-1001</td>
+                        <td>شريف نجيب</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 22:28</td>
+                        <td class="badge-id">VRT-2801</td>
+                        <td>يوسف طه</td>
+                        <td class="exit">خروج</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 23:52</td>
+                        <td class="badge-id">VRT-4501</td>
+                        <td>كريم فاروق</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">15/10/2024 - 00:47</td>
+                        <td class="badge-id">VRT-4501</td>
+                        <td>كريم فاروق</td>
+                        <td class="exit">خروج</td>
+                    </tr>
+                    <tr>
+                        <td class="time">15/10/2024 - 01:33</td>
+                        <td class="badge-id">VRT-1002</td>
+                        <td>داليا منصور</td>
+                        <td class="exit">خروج</td>
+                    </tr>
+                    <tr>
+                        <td class="time">15/10/2024 - 08:31</td>
+                        <td class="badge-id">VRT-3201</td>
+                        <td>منى سيد</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <h3>ملاحظات النظام</h3>
+                <p>- بطاقة VRT-1001 (شريف نجيب) لم تسجل خروجاً</p>
+                <p>- إجمالي الموظفين في المبنى عند الساعة 08:00 صباحاً: موظف واحد (شريف نجيب)</p>
+                <p>- لم تُسجل أي محاولات دخول فاشلة خلال الفترة المحددة</p>
+            </div>
+
+            <h3 style="color: #00d4ff; font-size: 20px; margin: 35px 0 15px 0;">سجل باب غرفة الخوادم (Server Room)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ والوقت</th>
+                        <th>رقم البطاقة</th>
+                        <th>اسم الموظف</th>
+                        <th>الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time">14/10/2024 - 20:55</td>
+                        <td class="badge-id">VRT-2801</td>
+                        <td>يوسف طه</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 21:18</td>
+                        <td class="badge-id">VRT-2801</td>
+                        <td>يوسف طه</td>
+                        <td class="exit">خروج</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 23:47</td>
+                        <td class="badge-id">VRT-4501</td>
+                        <td>كريم فاروق</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">14/10/2024 - 23:52</td>
+                        <td class="badge-id">VRT-4501</td>
+                        <td>كريم فاروق</td>
+                        <td class="exit">خروج</td>
+                    </tr>
+                    <tr>
+                        <td class="time">15/10/2024 - 00:12</td>
+                        <td class="badge-id">VRT-1002</td>
+                        <td>داليا منصور</td>
+                        <td class="entry">دخول</td>
+                    </tr>
+                    <tr>
+                        <td class="time">15/10/2024 - 01:05</td>
+                        <td class="badge-id">VRT-1002</td>
+                        <td>داليا منصور</td>
+                        <td class="exit">خروج</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <h3>معلومات إضافية</h3>
+                <p>- غرفة الخوادم تحتوي على نسخ احتياطية من جميع ملفات الشركة والخوارزميات</p>
+                <p>- الدخول لغرفة الخوادم محصور على: شريف نجيب، داليا منصور، يوسف طه، كريم فاروق (كممثل للمستثمرين)</p>
+                <p>- مكتب شريف الخاص لا يتطلب بطاقة دخول منفصلة - يمكن الوصول إليه من داخل المبنى</p>
+            </div>
+
+            <h3 style="color: #00d4ff; font-size: 20px; margin: 35px 0 15px 0;">البطاقات المسجلة في النظام</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم البطاقة</th>
+                        <th>اسم الموظف</th>
+                        <th>المنصب</th>
+                        <th>صلاحيات الدخول</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="badge-id">VRT-1001</td>
+                        <td>شريف نجيب</td>
+                        <td>الرئيس التنفيذي</td>
+                        <td>جميع المناطق</td>
+                    </tr>
+                    <tr>
+                        <td class="badge-id">VRT-1002</td>
+                        <td>داليا منصور</td>
+                        <td>مديرة التكنولوجيا</td>
+                        <td>جميع المناطق</td>
+                    </tr>
+                    <tr>
+                        <td class="badge-id">VRT-2801</td>
+                        <td>يوسف طه</td>
+                        <td>مطور رئيسي</td>
+                        <td>المكاتب، غرفة الخوادم</td>
+                    </tr>
+                    <tr>
+                        <td class="badge-id">VRT-3201</td>
+                        <td>منى سيد</td>
+                        <td>مديرة الموارد البشرية</td>
+                        <td>المكاتب، غرف الاجتماعات</td>
+                    </tr>
+                    <tr>
+                        <td class="badge-id">VRT-4501</td>
+                        <td>كريم فاروق</td>
+                        <td>ممثل المستثمرين</td>
+                        <td>المكاتب، غرفة الخوادم، غرف الاجتماعات</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">🔙 العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

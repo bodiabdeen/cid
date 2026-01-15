@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل 1: تقرير الطب الشرعي - القضية CI-7394</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #00d4ff;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .evidence-number {
+            color: #00d4ff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .document {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .doc-header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .doc-header h2 {
+            color: #00d4ff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .doc-header p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 5px;
+        }
+
+        .info-row .label {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .info-row .value {
+            color: #e0e0e0;
+        }
+
+        .section {
+            margin: 25px 0;
+        }
+
+        .section h3 {
+            color: #00d4ff;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            line-height: 2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table th {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 12px;
+            text-align: right;
+            border: 1px solid #00d4ff;
+        }
+
+        table td {
+            padding: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: left;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0a0a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .info-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="evidence-number">الدليل رقم 1</div>
+            <h1>📋 تقرير الطب الشرعي</h1>
+        </div>
+
+        <div class="document">
+            <div class="doc-header">
+                <h2>وزارة الصحة المصرية</h2>
+                <p>قسم الطب الشرعي - مستشفى القصر العيني</p>
+                <p>رقم التقرير: FOR-2024-10-1547</p>
+            </div>
+
+            <div class="section">
+                <h3>معلومات الحالة</h3>
+                <div class="info-row">
+                    <div class="label">اسم المتوفى:</div>
+                    <div class="value">شريف محمد نجيب</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">العمر:</div>
+                    <div class="value">41 عاماً</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">الجنس:</div>
+                    <div class="value">ذكر</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">تاريخ الفحص:</div>
+                    <div class="value">15 أكتوبر 2024، الساعة 11:00 صباحاً</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">مكان العثور على الجثة:</div>
+                    <div class="value">مكتب خاص، مقر شركة فيريترا، قرية القاهرة الذكية</div>
+                </div>
+                <div class="info-row">
+                    <div class="label">الطبيب الفاحص:</div>
+                    <div class="value">د. أحمد السيد حسن</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>الفحص الخارجي</h3>
+                <p>جثة رجل بالغ، الطول 178 سم، الوزن 82 كجم.</p>
+                <p>الجثة في حالة تيبس رمي كامل.</p>
+                <p>درجة حرارة الجثة عند الفحص: 22.5 درجة مئوية (درجة حرارة الغرفة: 24 درجة مئوية).</p>
+                <p>البشرة شاحبة، بقع زرقاء خفيفة على الأطراف السفلية.</p>
+                <p>لا توجد علامات عنف خارجية، لا توجد كدمات أو جروح.</p>
+                <p>الملابس: قميص أسود، بنطال جينز، حذاء رياضي.</p>
+            </div>
+
+            <div class="section">
+                <h3>الفحص الداخلي</h3>
+                <p>القلب: وزن 340 جرام، لا توجد تشوهات واضحة.</p>
+                <p>الرئتان: وزن 450 جرام (يمين)، 420 جرام (يسار)، احتقان خفيف.</p>
+                <p>الكبد: وزن 1580 جرام، لا توجد علامات مرضية.</p>
+                <p>الكليتان: طبيعيتان في الحجم والشكل.</p>
+                <p>المعدة: تحتوي على حوالي 200 مل من سائل بني داكن، رائحة قهوة واضحة.</p>
+                <p>الأمعاء: طبيعية، لا توجد علامات غير طبيعية.</p>
+            </div>
+
+            <div class="section">
+                <h3>التحليل السمي</h3>
+                <table>
+                    <tr>
+                        <th>العينة</th>
+                        <th>النتيجة</th>
+                    </tr>
+                    <tr>
+                        <td>الدم</td>
+                        <td>وجود مادة الديجوكسين (Digoxin) بتركيز 8.2 نانوجرام/مل</td>
+                    </tr>
+                    <tr>
+                        <td>البول</td>
+                        <td>وجود الديجوكسين بتركيز مرتفع</td>
+                    </tr>
+                    <tr>
+                        <td>محتوى المعدة</td>
+                        <td>وجود الديجوكسين، وجود كافيين، وجود حليب</td>
+                    </tr>
+                    <tr>
+                        <td>الكحول</td>
+                        <td>سلبي</td>
+                    </tr>
+                    <tr>
+                        <td>المخدرات الشائعة</td>
+                        <td>سلبي</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 20px;">ملاحظة: التركيز العلاجي الطبيعي للديجوكسين: 0.5-2.0 نانوجرام/مل</p>
+                <p>التركيز السام: أكثر من 2.5 نانوجرام/مل</p>
+                <p>التركيز المميت: 3.0 نانوجرام/مل وأكثر</p>
+            </div>
+
+            <div class="section">
+                <h3>تقدير وقت الوفاة</h3>
+                <p>بناءً على:</p>
+                <p>- درجة التيبس الرمي: تيبس كامل (6-12 ساعة بعد الوفاة)</p>
+                <p>- درجة حرارة الجثة: انخفاض بمقدار 13.5 درجة (حوالي 9-11 ساعة)</p>
+                <p>- حالة الهضم: وجود طعام مهضوم جزئياً في المعدة</p>
+                <p>الوقت التقديري للوفاة: بين الساعة 11:00 مساءً يوم 14 أكتوبر والساعة 2:00 صباحاً يوم 15 أكتوبر 2024</p>
+            </div>
+
+            <div class="section">
+                <h3>سبب الوفاة</h3>
+                <p>التسمم الحاد بمادة الديجوكسين (Digoxin Toxicity)</p>
+                <p>الديجوكسين دواء قلبي يستخدم لعلاج فشل القلب وعدم انتظام ضربات القلب.</p>
+                <p>الجرعة الزائدة تسبب: غثيان، قيء، اضطراب نظم القلب، توقف القلب.</p>
+                <p>لا يوجد في السجل الطبي للمتوفى أي وصفات طبية للديجوكسين.</p>
+                <p>المتوفى لم يكن يعاني من أمراض قلبية تتطلب هذا الدواء.</p>
+            </div>
+
+            <div class="section">
+                <h3>الاستنتاج</h3>
+                <p>الوفاة نتيجة تسمم حاد بمادة الديجوكسين.</p>
+                <p>التركيز المرتفع للمادة في الدم والبول يشير إلى جرعة كبيرة.</p>
+                <p>وجود المادة في محتوى المعدة مع القهوة يشير إلى الابتلاع الفموي.</p>
+                <p>عدم وجود وصفة طبية للديجوكسين يثير الشك في مصدر المادة.</p>
+            </div>
+
+            <div class="signature">
+                <p><strong>الطبيب الفاحص:</strong></p>
+                <p>د. أحمد السيد حسن</p>
+                <p>استشاري الطب الشرعي</p>
+                <p>رقم الترخيص: 45782</p>
+                <p>التاريخ: 15 أكتوبر 2024</p>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">🔙 العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

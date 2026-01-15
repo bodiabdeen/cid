@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القضية CI-7394 - جريمة في وادي السيليكون</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(15, 12, 41, 0.95);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .detective-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+            border: 2px solid #00d4ff;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .case-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .case-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 24px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #b0b0b0;
+            margin-top: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 0, 60, 0.1) 0%, rgba(255, 0, 120, 0.1) 100%);
+            border: 2px solid #ff0078;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .warning-box h2 {
+            color: #ff0078;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .briefing {
+            background: rgba(0, 212, 255, 0.05);
+            border-right: 4px solid #00d4ff;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .briefing h3 {
+            color: #00d4ff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .briefing p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-card .label {
+            color: #00d4ff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-card .value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0a0a;
+            padding: 18px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .toolkit-btn {
+            background: linear-gradient(135deg, #7f00ff 0%, #e100ff 100%);
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .toolkit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(127, 0, 255, 0.4);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 8, 20, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .modal-header h3 {
+            color: #00d4ff;
+            font-size: 22px;
+        }
+
+        .close-btn {
+            background: #ff0078;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .close-btn:hover {
+            background: #cc0060;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .tab-btn.active {
+            background: #00d4ff;
+            color: #0a0a0a;
+        }
+
+        .tab-content {
+            display: none;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h4 {
+            color: #00d4ff;
+            margin: 15px 0 10px 0;
+            font-size: 18px;
+        }
+
+        .tab-content ul {
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
+
+        .tab-content li {
+            margin-bottom: 8px;
+        }
+
+        .print-case-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .print-case-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        @media print {
+            .detective-icon, .toolkit-btn, .print-case-btn, .nav-buttons {
+                display: none;
+            }
+            body {
+                background: white;
+                color: black;
+            }
+            .container {
+                border: 1px solid black;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="detective-icon">🔍</div>
+
+    <div class="container">
+        <div class="case-header">
+            <div class="case-number">القضية CI-7394</div>
+            <h1>جريمة في وادي السيليكون</h1>
+            <div class="subtitle">مقتل رائد أعمال تقني في قلب القاهرة الجديدة</div>
+        </div>
+
+        <div class="warning-box">
+            <h2>⚠️ تحذير - قضية نشطة</h2>
+            <p>هذه القضية سرية للغاية. تحتوي على معلومات حساسة عن جريمة قتل في مجال التكنولوجيا.</p>
+            <p><strong>التصنيف:</strong> صعوبة متوسطة-عالية | النوع: تجسس تقني وخيانة</p>
+            <button class="toolkit-btn" onclick="showInstructions()">🛠️ أدوات التحقيق</button>
+        </div>
+
+        <div class="briefing">
+            <h3>📋 ملخص القضية</h3>
+            <p><strong>الضحية:</strong> شريف نجيب، مؤسس ورئيس تنفيذي لشركة "فيريترا" الناشئة</p>
+            <p><strong>العمر:</strong> 41 عاماً</p>
+            <p><strong>تاريخ ووقت الوفاة:</strong> 14 أكتوبر 2024، بين الساعة 11:00 مساءً و 2:00 صباحاً</p>
+            <p><strong>مكان الجريمة:</strong> مكتبه الخاص في مقر شركة فيريترا، قرية القاهرة الذكية الجديدة</p>
+            <p><strong>سبب الوفاة:</strong> تسمم - المادة السامة قيد التحليل</p>
+            
+            <p style="margin-top: 20px;">تم العثور على شريف نجيب ميتاً في مكتبه صباح يوم 15 أكتوبر على يد موظفة الموارد البشرية. كان يعمل على خوارزمية جديدة في جلسة برمجة ليلية. الحواسيب لا تزال مفتوحة، وفنجان القهوة بجانب لوحة المفاتيح.</p>
+            
+            <p style="margin-top: 15px;">الشركة على وشك جولة تمويلية كبيرة وتواجه منافسة شديدة من شركات أخرى. هناك ضغوط هائلة من المستثمرين، وتوترات داخل الفريق بشأن اتجاه الشركة.</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">عدد المشتبه بهم</div>
+                <div class="value">5 أشخاص</div>
+            </div>
+            <div class="info-card">
+                <div class="label">الأدلة المتاحة</div>
+                <div class="value">6 ملفات</div>
+            </div>
+            <div class="info-card">
+                <div class="label">الموقع</div>
+                <div class="value">القاهرة الجديدة</div>
+            </div>
+            <div class="info-card">
+                <div class="label">القطاع</div>
+                <div class="value">تكنولوجيا</div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="case-file.html" class="nav-btn">👥 ملفات المشتبه بهم</a>
+            <a href="evidence-01.html" class="nav-btn">📄 الدليل 1</a>
+            <a href="evidence-02.html" class="nav-btn">📄 الدليل 2</a>
+            <a href="evidence-03.html" class="nav-btn">📄 الدليل 3</a>
+            <a href="evidence-04.html" class="nav-btn">📄 الدليل 4</a>
+            <a href="evidence-05.html" class="nav-btn">📄 الدليل 5</a>
+            <a href="evidence-06.html" class="nav-btn">📄 الدليل 6</a>
+            <a href="hint-1.html" class="nav-btn">💡 تلميح 1</a>
+            <a href="hint-2.html" class="nav-btn">💡 تلميح 2</a>
+            <a href="hint-3.html" class="nav-btn">💡 تلميح 3</a>
+            <a href="solution.html" class="nav-btn">✅ الحل الكامل</a>
+        </div>
+    </div>
+
+    <button class="print-case-btn" onclick="printCase()">🖨️ طباعة القضية</button>
+
+    <div id="instructionsModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🛠️ أدوات التحقيق</h3>
+                <button class="close-btn" onclick="closeInstructions()">إغلاق</button>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('translate')">ترجمة الصفحة</button>
+                <button class="tab-btn" onclick="switchTab('listen')">الاستماع للصفحة</button>
+            </div>
+            
+            <div id="translateTab" class="tab-content active">
+                <h4>📱 على الهاتف المحمول:</h4>
+                <ul>
+                    <li><strong>أندرويد (Chrome):</strong> اضغط على القائمة (⋮) ← اختر "ترجمة"</li>
+                    <li><strong>آيفون (Safari):</strong> اضغط على أيقونة "aA" في شريط العنوان ← اختر "ترجمة إلى..."</li>
+                </ul>
+                
+                <h4>💻 على الكمبيوتر:</h4>
+                <ul>
+                    <li><strong>Chrome:</strong> انقر بزر الماوس الأيمن ← اختر "ترجمة إلى..."</li>
+                    <li><strong>Edge:</strong> انقر بزر الماوس الأيمن ← اختر "ترجمة"</li>
+                    <li><strong>Safari:</strong> من قائمة "عرض" ← اختر "ترجمة إلى..."</li>
+                </ul>
+            </div>
+            
+            <div id="listenTab" class="tab-content">
+                <h4>📱 على الهاتف المحمول:</h4>
+                <ul>
+                    <li><strong>أندرويد:</strong> حدد النص ← اضغط على "استماع" أو "قراءة بصوت عالٍ"</li>
+                    <li><strong>آيفون:</strong> حدد النص ← اختر "نطق"</li>
+                </ul>
+                
+                <h4>💻 على الكمبيوتر:</h4>
+                <ul>
+                    <li><strong>Chrome/Edge:</strong> حدد النص ← انقر بزر الماوس الأيمن ← "قراءة بصوت عالٍ"</li>
+                    <li><strong>Windows:</strong> استخدم الراوي (Win + Ctrl + Enter)</li>
+                    <li><strong>Mac:</strong> فعّل VoiceOver من إعدادات النظام</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showInstructions() {
+            document.getElementById('instructionsModal').classList.remove('hidden');
+        }
+
+        function closeInstructions() {
+            document.getElementById('instructionsModal').classList.add('hidden');
+        }
+
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+
+        async function printCase() {
+            const printBtn = document.querySelector('.print-case-btn');
+            printBtn.textContent = '⏳ جاري التحضير...';
+            printBtn.disabled = true;
+
+            try {
+                const pages = [
+                    'case-file.html',
+                    'evidence-01.html',
+                    'evidence-02.html',
+                    'evidence-03.html',
+                    'evidence-04.html',
+                    'evidence-05.html',
+                    'evidence-06.html'
+                ];
+
+                let combinedContent = `
+                    <!DOCTYPE html>
+                    <html lang="ar" dir="rtl">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>القضية CI-7394 - نسخة للطباعة</title>
+                        <style>
+                            body { font-family: 'Cairo', Arial, sans-serif; padding: 20px; background: white; color: black; }
+                            h1, h2, h3 { color: #000; page-break-after: avoid; }
+                            .page-break { page-break-before: always; }
+                            img { max-width: 100%; height: auto; }
+                            @media print {
+                                body { margin: 0; }
+                                .page-break { page-break-before: always; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1 style="text-align: center;">القضية CI-7394</h1>
+                        <h2 style="text-align: center;">جريمة في وادي السيليكون</h2>
+                        <hr>
+                `;
+
+                for (const page of pages) {
+                    try {
+                        const response = await fetch(page);
+                        const html = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const content = doc.querySelector('.container');
+                        if (content) {
+                            combinedContent += '<div class="page-break">' + content.innerHTML + '</div>';
+                        }
+                    } catch (err) {
+                        console.error('Error loading ' + page, err);
+                    }
+                }
+
+                combinedContent += '</body></html>';
+
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(combinedContent);
+                printWindow.document.close();
+                
+                setTimeout(() => {
+                    printWindow.print();
+                }, 1000);
+
+            } catch (error) {
+                alert('حدث خطأ أثناء تحضير الطباعة');
+                console.error(error);
+            } finally {
+                printBtn.textContent = '🖨️ طباعة القضية';
+                printBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
